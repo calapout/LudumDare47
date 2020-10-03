@@ -10,6 +10,8 @@ public class Entity : MonoBehaviour
     private Vector2 direction = Vector2.zero;
     private Rigidbody2D RB;
     private SpriteRenderer SR;
+    private bool canAttack = true;
+    [SerializeField] private float attackCooldown;
     public int Hp
     {
         get => _Hp;
@@ -108,16 +110,22 @@ public class Entity : MonoBehaviour
 
     public void Attack()
     {
-        
+        if (!canAttack)
+        {
+            return;
+        }
+        print("Attack");
+        canAttack = false;
     }
 
     private void FixedUpdate()
     {
-        if (direction == Vector2.zero)
-        {
-            return;
-        }
-        RB?.AddRelativeForce(direction);
-        direction = Vector2.zero;
+        RB.velocity = direction;
+    }
+
+    private IEnumerator Cooldown(float second)
+    {
+        yield return new WaitForSecondsRealtime(second);
+        canAttack = true;
     }
 };
