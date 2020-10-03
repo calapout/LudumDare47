@@ -1,0 +1,3 @@
+[submodule "Assets/Plugins/byte-utils"]
+	path = Assets/Plugins/byte-utils
+	url = git@github.com:craftwill/bytes-unity-utils.git
