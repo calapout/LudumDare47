@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Orientation",
+                    "type": "Value",
+                    "id": "3aa06a45-4f0c-4cab-ac67-8c2322ef0f6e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -165,22 +173,22 @@
                 },
                 {
                     "name": "",
-                    "id": "072f5dcc-10a4-4a33-822d-7d9b79cf0e97",
-                    "path": "<Keyboard>/#(K)",
+                    "id": "eab35114-e337-4469-a3e7-915bd4db4773",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": "Gamepad",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "eab35114-e337-4469-a3e7-915bd4db4773",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "d63ede08-0e13-47e0-90d4-042e322b53a9",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "Keyboard&Mouse",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -204,6 +212,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interract",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b17146de-242a-434d-b349-ad80a4164144",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Orientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0251a68-b6e9-4f1e-8a0f-e744fc69efa2",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Orientation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
