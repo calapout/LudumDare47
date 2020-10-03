@@ -3,79 +3,123 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopController : MonoBehaviour
+namespace Bytes
 {
-    private int numberSouls = 100;
-    private int healthLevel = 0;
-    private int armorLevel = 0;
-    private int strengthLevel = 0;
-    private int[] upgradePrice = { 5, 10, 20, 30, 50, 80 };
-    private int[] nextLevel = { 2, 5, 14, 35, 75, 150 };
 
-    [SerializeField] Text soulsText;
-    //[SerializeField] Player player;
-    [SerializeField] Button[] buttons;
-
-    // Start is called before the first frame update
-
-    void Start()
+    public class ShopController : MonoBehaviour
     {
-        soulsText.text = numberSouls.ToString();
-        /*Find level*/
-        
+        private int numberSouls;
+        private int playerHealth;
+        private int playerDefense;
+        private int playerAttack;
+        private int healthIndex;
+        private int defenseIndex;
+        private int attackIndex;
+        private int[] upgradePrice = { 5, 10, 20, 30, 50, 80 };
+        private int[] playerLevel = { 5, 14, 35, 75, 150, 275 };
 
-    }
+        [SerializeField] Player player;
 
-    public void buyHealth(Text text)
-    {
-        /*if (numberSouls >= int.Parse(text.text))
+
+        // Start is called before the first frame update
+
+        void Start()
         {
-            healthLevel = buyItem(text, healthLevel, healthBar);
-        }*/
-        /**/
-
-        
-    }
-
-    public void buyArmor(Text text)
-    {
-       /* if(numberSouls >= int.Parse(text.text))
-        {
-            armorLevel = buyItem(text, armorLevel, armorBar);
-        }*/
-    }
-
-    public void buyStrength(Text text)
-    {
-      /*if (numberSouls >= int.Parse(text.text))
-        {
-            strengthLevel = buyItem(text, strengthLevel, strengthBar);
-        }*/
-    }
-
-    public int buyItem(Text text, int level, Slider bar)
-    {
-        level++;
-        bar.value = level * 20;
-        numberSouls -=int.Parse(text.text);
-        soulsText.text = numberSouls.ToString();
-        if (level + 1 < upgradePrice.Length)
-        {
-            text.text = upgradePrice[level + 1].ToString();
+            EventManager.AddEventListener("buyHealth", BuyHealth);
+            EventManager.AddEventListener("buyDefense", BuyDefense);
+            EventManager.AddEventListener("buyAttack", BuyAttack);
+            initialiseValues();
         }
-        return level;
 
-    }
+        public void BuyHealth(Data data)
+        {
+            Debug.Log("hello i'm buy health");
+            int tempIndex = BuyItem(healthIndex, upgradePrice[healthIndex]);
+            if (tempIndex != -1)
+            {
+                healthIndex = tempIndex;
+                RefreshHealthValues();
+            }
+        
+        
+        }
 
-    public void closeWindow()
-    {
-        gameObject.SetActive(false);
-    }
+        public void BuyDefense(Data data)
+        {
+            Debug.Log("hello i'm buying defense");
+            int tempIndex = BuyItem(defenseIndex, upgradePrice[defenseIndex]);
+            if (tempIndex != -1)
+            {
+                defenseIndex = tempIndex;
+                RefreshDefenseValues();
+            }
+        }
 
-    public void openWindow()
-    {
-        gameObject.SetActive(true);
-    }
+        public void BuyAttack(Data data)
+        {
+            Debug.Log("hello i'm buying attack");
+            int tempIndex = BuyItem(attackIndex, upgradePrice[attackIndex]);
+            if (tempIndex != -1)
+            {
+                attackIndex = tempIndex;
+               RefreshAttackValues();
+            }
+        }
 
+        private int BuyItem(int level, int price)
+        {
+            if (numberSouls >= price)
+            {
+                level++;
+                player.ReduceSouls(price);
+                return level;
+            }
+            return -1;
+
+        }
+
+        private void initialiseValues()
+        {
+            numberSouls = player.Souls;
+            playerHealth = player.Hp;
+            playerDefense = player.Defense;
+            playerAttack = player.Damage;
+            healthIndex = FindUpgradeIndex(playerHealth);
+            attackIndex = FindUpgradeIndex(playerAttack);
+            defenseIndex = FindUpgradeIndex(playerDefense);
+        }
+
+        private void RefreshHealthValues()
+        {
+            /*Get the info of the player*/
+            numberSouls = player.Souls;
+            playerHealth = player.Hp;
+
+        }
+
+        private void RefreshDefenseValues()
+        {
+            numberSouls = player.Souls;
+            playerDefense = player.Defense;
+        }
+
+        private void RefreshAttackValues()
+        {
+            numberSouls = player.Souls;
+            playerAttack = player.Damage;
+        }
+
+        private int FindUpgradeIndex(int playerValue)
+        {
+            for (int i =0; i < playerLevel.Length; i++)
+            {
+                if (playerLevel[i] == playerValue)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     
+    }
 }
