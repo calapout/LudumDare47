@@ -5,60 +5,76 @@ using UnityEngine.UI;
 
 public class ShopController : MonoBehaviour
 {
-    private int numberSouls = 5;
+    private int numberSouls = 100;
     private int healthLevel = 0;
     private int armorLevel = 0;
     private int strengthLevel = 0;
     private int[] upgradePrice = { 5, 10, 20, 30, 50, 80 };
+    private int[] nextLevel = { 2, 5, 14, 35, 75, 150 };
 
     [SerializeField] Text soulsText;
-    [SerializeField] Slider healthBar;
-    [SerializeField] Slider armorBar;
-    [SerializeField] Slider strengthBar;
+    //[SerializeField] Player player;
+    [SerializeField] Button[] buttons;
 
     // Start is called before the first frame update
 
     void Start()
     {
-        /*Take values from player*/
         soulsText.text = numberSouls.ToString();
-        /*Get number of souls from player*/
-        /*Get level for each category*/
+        /*Find level*/
+        
 
     }
 
     public void buyHealth(Text text)
     {
-        if (numberSouls >= int.Parse(text.text))
+        /*if (numberSouls >= int.Parse(text.text))
         {
-            healthLevel++;
-            healthBar.value = healthLevel * 10;
-            if (healthLevel + 1 < upgradePrice.Length)
-            {
-                text.text = upgradePrice[healthLevel + 1].ToString();
-            }
-        }
+            healthLevel = buyItem(text, healthLevel, healthBar);
+        }*/
+        /**/
+
         
     }
 
     public void buyArmor(Text text)
     {
-        armorLevel++;
-        armorBar.value = armorLevel * 10;
-        if (armorLevel + 1 < upgradePrice.Length)
+       /* if(numberSouls >= int.Parse(text.text))
         {
-            text.text = upgradePrice[armorLevel + 1].ToString();
-        }
+            armorLevel = buyItem(text, armorLevel, armorBar);
+        }*/
     }
 
     public void buyStrength(Text text)
     {
-        strengthLevel++;
-        strengthBar.value = strengthLevel * 10;
-        if (strengthLevel + 1 < upgradePrice.Length)
+      /*if (numberSouls >= int.Parse(text.text))
         {
-            text.text = upgradePrice[strengthLevel + 1].ToString();
+            strengthLevel = buyItem(text, strengthLevel, strengthBar);
+        }*/
+    }
+
+    public int buyItem(Text text, int level, Slider bar)
+    {
+        level++;
+        bar.value = level * 20;
+        numberSouls -=int.Parse(text.text);
+        soulsText.text = numberSouls.ToString();
+        if (level + 1 < upgradePrice.Length)
+        {
+            text.text = upgradePrice[level + 1].ToString();
         }
+        return level;
+
+    }
+
+    public void closeWindow()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void openWindow()
+    {
+        gameObject.SetActive(true);
     }
 
     
