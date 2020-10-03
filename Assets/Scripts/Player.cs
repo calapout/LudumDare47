@@ -76,8 +76,8 @@ public class Player : MonoBehaviour
         Vector3 direction3D;
         if (input.currentControlScheme == "Keyboard&Mouse")
         {
-            direction3D = _camera.ScreenToWorldPoint(new Vector3(direction.x, direction.y, 0)).normalized;
-            direction = new Vector2(direction3D.x, direction3D.y);
+            direction3D = _camera.ScreenToWorldPoint(new Vector3(direction.x, direction.y, 0));
+            direction = new Vector2(direction3D.x - gameObject.transform.position.x, direction3D.y - gameObject.transform.position.y).normalized;
         }
         PlayerEntity.Rotate(direction);
     }
