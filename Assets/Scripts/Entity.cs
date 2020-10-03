@@ -59,17 +59,22 @@ public class Entity : MonoBehaviour
     public void IncreaseDefense(int addedDefense)
     {
         this.Defense += addedDefense;
+        IncreaseLevel();
+
     }
 
     public void IncreaseHp(int addedHp)
     {
         this.Hp += addedHp;
         this.MaxHp += addedHp;
+        IncreaseLevel();
+
     }
 
     public void IncreaseDamage(int addedDamage)
     {
         this.Damage += Damage;
+        IncreaseLevel();
     }
 
     private void IncreaseLevel()
@@ -108,14 +113,24 @@ public class Entity : MonoBehaviour
         this.direction = direction;
     }
 
+    public void Rotate(Vector2 direction)
+    {
+        if (direction == Vector2.zero)
+        {
+            return;
+        }
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
     public void Attack()
     {
         if (!canAttack)
         {
             return;
         }
-        print("Attack");
-        canAttack = false;
+        DisableAttack();
+        Invoke("EnableAttack", attackCooldown);
     }
 
     private void FixedUpdate()
@@ -123,9 +138,13 @@ public class Entity : MonoBehaviour
         RB.velocity = direction;
     }
 
-    private IEnumerator Cooldown(float second)
+    private void EnableAttack()
     {
-        yield return new WaitForSecondsRealtime(second);
-        canAttack = true;
+        this.canAttack = true;
+    }
+    
+    private void DisableAttack()
+    {
+        this.canAttack = false;
     }
 };
