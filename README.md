@@ -19,8 +19,11 @@
     - [x] IncreaseLevel()
 
 - Player `Component`
-   - [ ] Controls `Fonctionnality`
-   - [ ] SOULS `Fonctionnality`
+   - Controls `Fonctionnality`
+        - [x] Attack
+        - [x] Movement
+        - [ ] Interract
+   - [x] SOULS `Fonctionnality`
 
 - Enemy `Component`
   - [ ] AI `Fonctionnality`
