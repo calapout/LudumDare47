@@ -29,8 +29,9 @@ public class EntityAnimationController : MonoBehaviour
 
         if (testAnims)
         {
-            Animate.Delay(2f, PlayAttackAnim);
-            Animate.Delay(5f, () => { PlayDieAnim(() => { Destroy(gameObject); }); });
+            Animate.Delay(2f, StartMovingAnimation);
+            Animate.Delay(4f, PlayAttackAnim);
+            Animate.Delay(8f, () => { PlayDieAnim(() => { Destroy(gameObject); }); });
         }
     }
 
