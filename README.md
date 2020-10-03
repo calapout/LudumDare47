@@ -4,21 +4,26 @@
 
 ###Code
 - Entities `Component`
-    - [ ] HP
-    - [ ] MaxHp
-    - [ ] Damage
-    - [ ] Armor
-    - [ ] Level
-    - [ ] Attack()
-    - [ ] Move()
-    - [ ] TakeDamage()
-    - [ ] Die()
-    - [ ] IncreaseStat(stat)
-    - [ ] IncreaseLevel()
+    - [x] HP
+    - [x] MaxHp
+    - [x] Damage
+    - [x] Defense
+    - [x] Level
+    - [~] Attack()
+    - [x] Move()
+    - [x] TakeDamage()
+    - [x] Die()
+    - [x] IncreaseDamage(value)
+    - [x] IncreaseDefense(value)
+    - [x] IncreaseHp(value)
+    - [x] IncreaseLevel()
 
 - Player `Component`
-   - [ ] Controls `Fonctionnality`
-   - [ ] SOULS `Fonctionnality`
+   - Controls `Fonctionnality`
+        - [x] Attack
+        - [x] Movement
+        - [ ] Interract
+   - [x] SOULS `Fonctionnality`
 
 - Enemy `Component`
   - [ ] AI `Fonctionnality`
