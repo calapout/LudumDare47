@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - canDamage
+  - soul
   layers:
   - Default
   - TransparentFX
