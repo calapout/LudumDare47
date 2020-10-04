@@ -137,4 +137,4 @@ MonoBehaviour:
   tagToFollow: Player
   eventNameToDispatch: playerGainsSoul
   rg: {fileID: 6063473358369985465}
-  speedBetween: {x: 3, y: 7}
+  speedBetween: {x: 11, y: 18}

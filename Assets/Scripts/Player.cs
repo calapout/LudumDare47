@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] private int[] _Levels = new int[3]{0,0,0};//0 = Hp, 1 = Damage, 2 = Defense
     [SerializeField] private Camera _camera;
 
+    [SerializeField] private Transform shopSpawn;
+    [SerializeField] private Transform arenaSpawn;
+
     public int Souls
     {
         get => _Souls;
@@ -83,11 +86,6 @@ public class Player : MonoBehaviour
         {
             EntityData entityData = (EntityData)data;
             Entity entity = entityData.entity;
-            this._Souls += entity.SoulValue;
-            if (entity == PlayerEntity)
-            {
-                Respawn();
-            }
         }
     }
 
@@ -116,6 +114,10 @@ public class Player : MonoBehaviour
     {
         EventManager.AddEventListener("EntityDie", OnEntityDie);
         PlayerEntity = GetComponent<Entity>();
+
+        PlayerEntity.OnDieAnimDone.AddListener((Entity e)=> {
+            Animate.Delay(1.2f, Respawn);
+        });
     }
 
     private void Update()
@@ -125,6 +127,8 @@ public class Player : MonoBehaviour
 
     private void Respawn()
     {
-        
+        transform.position = shopSpawn.position;
+        PlayerEntity.ResetEntity();
     }
+
 }
