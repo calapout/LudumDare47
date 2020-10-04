@@ -163,11 +163,13 @@ public class Entity : MonoBehaviour
 
     private void TakeDamage(Entity from)
     {
+        if (isDead) { return; }
+
         //print("damage: "+ from.Damage);
         this.canTakeDamage = false;
         Invoke("EnableDamageTaking", damageTakingCooldown);
         this.Hp -= Mathf.Clamp(from.Damage - Defense, 1, 9999);
-        OnTakeDamage.Invoke(from);
+        OnTakeDamage?.Invoke(from);
         if (this.Hp <= 0)
         {
             this.Hp = 0;
