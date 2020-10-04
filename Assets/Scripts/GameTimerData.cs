@@ -1,13 +1,14 @@
 ﻿using Bytes;
 public class GameTimerData : Bytes.Data
 {
+    private float _pourcent;
     public float pourcent
     {
-        get => pourcent;
-        private set => pourcent = value;
+        get => _pourcent;
+        private set => _pourcent = value;
     }
-    public GameTimerData(float pourcent)
+    public GameTimerData(float TimerPourcent)
     {
-        this.pourcent = pourcent;
+        this.pourcent = TimerPourcent;
     }
 }

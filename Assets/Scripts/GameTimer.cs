@@ -8,16 +8,14 @@ public class GameTimer : MonoBehaviour
 {
     private float timeLeft;
     [SerializeField] private float timerLength = 120f;
-
-    [SerializeField] private bool isTimerEnable = false;
-    // Start is called before the first frame update
+    private bool isTimerEnable = false;
+    
     void Start()
     {
         EventManager.AddEventListener("GameTimerStart", EnableTimer);
         EventManager.AddEventListener("GameTimerStop", DisableTimer);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (!isTimerEnable)
