@@ -28,10 +28,13 @@ namespace Bytes
             EventManager.AddEventListener("buyHealth", BuyHealth);
             EventManager.AddEventListener("buyDefense", BuyDefense);
             EventManager.AddEventListener("buyAttack", BuyAttack);
+            //EventManager.Dispatch("initializeValues", null);
+            InitialiseValues();
         }
 
         public void BuyHealth(Data data)
         {
+            Debug.Log("i am buying health");
             int price = upgradePrice[HealthIndex];
             if ( HealthIndex >= (upgradePrice.Length -1) || NumberSouls < price)
             {
@@ -70,7 +73,7 @@ namespace Bytes
                 RefreshAttackValues();
         }
 
-        public void InitialiseValues(Data data)
+        public void InitialiseValues()
         {
             NumberSouls = player.Souls;
             PlayerHealth = player.Hp;

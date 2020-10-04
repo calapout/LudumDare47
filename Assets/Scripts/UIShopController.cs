@@ -27,12 +27,20 @@ public class UIShopController : MonoBehaviour
         EventManager.AddEventListener("updateAttack", UpdateAttack);
         EventManager.AddEventListener("updateDefense", UpdateDefense);
         EventManager.AddEventListener("updateSouls", UpdateSouls);
-        EventManager.Dispatch("initializeValues", null);
+        EventManager.AddEventListener("openWindow", OpenWindow);
+        EventManager.AddEventListener("closeWindow", CloseWindow);
+
+    }
+
+    private void Awake()
+    {
+        
     }
 
     public void BuyHealthUI()
     {
         EventManager.Dispatch("buyHealth", null);
+        
     }
 
     public void BuyDefenseUI()
@@ -73,12 +81,12 @@ public class UIShopController : MonoBehaviour
 
     
 
-    public void CloseWindow()
+    public void CloseWindow(Data data)
     {
         gameObject.SetActive(false);
     }
 
-    public void OpenWindow()
+    public void OpenWindow(Data data)
     {
         gameObject.SetActive(true);
     }
