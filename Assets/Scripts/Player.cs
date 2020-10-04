@@ -27,41 +27,42 @@ public class Player : MonoBehaviour
     public int Hp
     {
         get => PlayerEntity.Hp;
-        set => PlayerEntity.IncreaseHp(PlayerEntity.Hp - value);
+        set => PlayerEntity.IncreaseHp(value - PlayerEntity.Hp);
     }
     
     public int HpLevel
     {
         get => _Levels[0];
-        private set => _Levels[0] += value;
+        private set => _Levels[0] = value;
     }
     
     public int Damage
     {
         get => PlayerEntity.Damage;
-        set => PlayerEntity.IncreaseDamage(PlayerEntity.Damage - value);
+        set => PlayerEntity.IncreaseDamage(value - PlayerEntity.Damage);
     }
     
     public int DamageLevel
     {
         get => _Levels[1];
-        private set => _Levels[1] += value;
+        private set => _Levels[1] = value;
     }
     
     public int Defense
     {
         get => PlayerEntity.Defense;
-        set => PlayerEntity.IncreaseDefense(PlayerEntity.Defense - value);
+        set => PlayerEntity.IncreaseDefense(value - PlayerEntity.Defense);
     }
     public int DefenseLevel
     {
         get => _Levels[2];
-        private set => _Levels[2] += value;
+        private set => _Levels[2] = value;
     }
 
     public void OnMove(InputValue value)
     {
-        PlayerEntity.Move(value.Get<Vector2>() * Speed);
+        Vector2 movement = value.Get<Vector2>();
+        PlayerEntity.Move(movement * Speed);
     }
 
     public void OnAttack(InputValue value)
