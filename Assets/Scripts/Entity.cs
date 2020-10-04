@@ -14,7 +14,7 @@ public class Entity : MonoBehaviour
     private bool canAttack = true;
     private bool canTakeDamage = true;
     private bool isDead = false;
-    [SerializeField] private float attackCooldown, damageTakingCooldown;
+    [SerializeField] private float attackCooldown, damageTakingCooldown, _MovementSpeed;
     [SerializeField] private EntityAnimationController _animController;
 
     public int Hp
@@ -45,6 +45,12 @@ public class Entity : MonoBehaviour
     {
         get => _Level;
         private set => _Level = value;
+    }
+    
+    public float MovementSpeed
+    {
+        get => _MovementSpeed;
+        private set => _MovementSpeed = value;
     }
 
     public int SoulValue
@@ -116,8 +122,7 @@ public class Entity : MonoBehaviour
         }
 
         isDead = true;
-        _animController?.PlayDieAnim(()=>EventManager.Dispatch("EntityDie", new EntityData(this)));
-        EventManager.Dispatch("playerGainsSoul", new ObjectCreationManager.SoulsplosionData(this.SoulValue, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)));
+        ThrowDieEvent();
         if (SR != null)
         {
             SR.color = new Color(1f,1f,1f,0f);
@@ -126,7 +131,7 @@ public class Entity : MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-        this.direction = direction;
+        this.direction = direction * this.MovementSpeed;
         
         if (direction == Vector2.zero)
         {
@@ -188,5 +193,11 @@ public class Entity : MonoBehaviour
         {
             TakeDamage(colliderObject.GetComponentInParent<Entity>().Damage);
         }
+    }
+
+    private void ThrowDieEvent()
+    {
+        _animController?.PlayDieAnim(()=>EventManager.Dispatch("EntityDie", new EntityData(this)));
+        EventManager.Dispatch("playerGainsSoul", new ObjectCreationManager.SoulsplosionData(this.SoulValue, new Vector2(transform.position.x, transform.position.y)));
     }
 };

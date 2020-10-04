@@ -1729,7 +1729,7 @@ GameObject:
   - component: {fileID: 1959395009263261904}
   - component: {fileID: 1959395009263261905}
   m_Layer: 0
-  m_Name: champion
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1807,6 +1807,7 @@ MonoBehaviour:
   _SoulValue: 0
   attackCooldown: 1
   damageTakingCooldown: 0.5
+  _MovementSpeed: 5
   _animController: {fileID: 0}
 --- !u!114 &1959395009263261904
 MonoBehaviour:
@@ -1820,7 +1821,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b061f9744a63d8f41ab679201cdd4661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 5
   _Souls: 0
   _Levels: 000000000000000000000000
   _camera: {fileID: 0}
