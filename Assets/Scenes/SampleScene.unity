@@ -1007,6 +1007,24 @@ Material:
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!1 &861871908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1139332273700610343, guid: 56952290dfa99504fa148ff4f7c4d4b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 322201029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &861871909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861871908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a339685c2c15db4d969ef6c2693d5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1065940828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1118,7 @@ GameObject:
   - component: {fileID: 1075327136}
   - component: {fileID: 1075327135}
   - component: {fileID: 1075327134}
+  - component: {fileID: 1075327137}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1145,6 +1164,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075327137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075327133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aed6b6a984dd8634aae4b14dcc36bcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soulPrefab: {fileID: 6063473358369985469, guid: 4de8555626430ac49be777b6c5d73656,
+    type: 3}
+  damageTextPrefab: {fileID: 0}
 --- !u!1 &1102964246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1102964247
 MonoBehaviour:
   m_ObjectHideFlags: 0
