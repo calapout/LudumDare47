@@ -74,6 +74,7 @@ public class EntityAnimationController : MonoBehaviour
 
     public void PlayDieAnim(System.Action callback)
     {
+        _AnimStateMachine.enabled = false;
         Utils.PlayAnimatorClip(GetComponent<Animator>(), animPrefix + "_die", callback);
     }
 

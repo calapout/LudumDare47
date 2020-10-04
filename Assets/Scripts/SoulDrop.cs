@@ -22,7 +22,7 @@ public class SoulDrop : MonoBehaviour
         rg.AddForce(new Vector2(Utils.PositiveOrNegative(Random.Range(1, 5)), Utils.PositiveOrNegative(Random.Range(1, 5))), ForceMode2D.Impulse);
         initialScale = transform.localScale;
 
-        Animate.Delay(Random.Range(2f, 5f), GoToPlayer);
+        Animate.Delay(Random.Range(1f, 3f), GoToPlayer);
     }
     private void Update()
     {

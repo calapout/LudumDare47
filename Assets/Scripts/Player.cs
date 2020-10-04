@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _Speed = 1;
     [SerializeField] private int _Souls = 0;
     private Entity PlayerEntity;
     private bool CanOpenShop = false;
@@ -16,10 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private int[] _Levels = new int[3] { 0, 0, 0 };//0 = Hp, 1 = Damage, 2 = Defense
     [SerializeField] private Camera _camera;
 
-    public float Speed
-    {
-        get => _Speed;
-    }
+    [SerializeField] private Transform shopSpawn;
+    [SerializeField] private Transform arenaSpawn;
 
     public int Souls
     {
@@ -69,7 +66,7 @@ public class Player : MonoBehaviour
             return;
         }
         Vector2 movement = value.Get<Vector2>();
-        PlayerEntity.Move(movement * Speed);
+        PlayerEntity.Move(movement);
     }
 
     public void OnAttack(InputValue value)
@@ -102,11 +99,6 @@ public class Player : MonoBehaviour
         {
             EntityData entityData = (EntityData)data;
             Entity entity = entityData.entity;
-            this._Souls += entity.SoulValue;
-            if (entity == PlayerEntity)
-            {
-                Respawn();
-            }
         }
     }
 
@@ -162,6 +154,10 @@ public class Player : MonoBehaviour
     {
         EventManager.AddEventListener("EntityDie", OnEntityDie);
         PlayerEntity = GetComponent<Entity>();
+
+        PlayerEntity.OnDieAnimDone.AddListener((Entity e)=> {
+            Animate.Delay(1.2f, Respawn);
+        });
     }
 
     private void Update()
@@ -171,22 +167,8 @@ public class Player : MonoBehaviour
 
     private void Respawn()
     {
-
+        transform.position = shopSpawn.position;
+        PlayerEntity.ResetEntity();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("shop"))
-        {
-            CanOpenShop = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("shop"))
-        { 
-            CanOpenShop = false;
-        }
-    }
 }

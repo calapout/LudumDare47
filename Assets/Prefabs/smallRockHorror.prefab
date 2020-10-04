@@ -706,7 +706,7 @@ MonoBehaviour:
   animPrefix: smallRockHorror
   attackColliders:
   - {fileID: 8807103841581702674}
-  testAnims: 1
+  testAnims: 0
 --- !u!95 &8807103841077442646
 Animator:
   serializedVersion: 3
@@ -838,7 +838,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8807103841581702684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -869,6 +869,7 @@ GameObject:
   - component: {fileID: 4104330459160924037}
   - component: {fileID: 3208079575280159720}
   - component: {fileID: 8301706604690184616}
+  - component: {fileID: 2036099795}
   m_Layer: 0
   m_Name: smallRockHorror
   m_TagString: Untagged
@@ -885,7 +886,7 @@ Transform:
   m_GameObject: {fileID: 8807103841740347754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.73, y: 5.47, z: -1.2774272}
-  m_LocalScale: {x: 2.6971, y: 2.6971, z: 2.6971}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8807103841233402911}
   m_Father: {fileID: 0}
@@ -903,15 +904,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803eb05bd02a96545afa4da00b1571f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Hp: 30
-  _MaxHp: 30
-  _Damage: 30
-  _Defense: 20
-  _Level: 0
+  _Hp: 77
+  _MaxHp: 77
+  _Damage: 10
+  _Defense: 12
+  _Level: 7
   _SoulValue: 20
-  attackCooldown: 1
+  attackCooldown: 1.7
   damageTakingCooldown: 0.5
+  _MovementSpeed: 2.5
+  _Range: 0
   _animController: {fileID: 0}
+  clan: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &3208079575280159720
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -940,7 +947,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -949,6 +956,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2036099795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807103841740347754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eb0802c1fa64541bf76fdf67924b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlledEntity: {fileID: 0}
+  creatureCampName: 
+  target: {fileID: 0}
+  initOnStart: 0
+  alphaStatDamage: 5
+  alphaStatHP: 33
+  alphaStatArmor: 5
 --- !u!1 &8807103842526702850
 GameObject:
   m_ObjectHideFlags: 0
