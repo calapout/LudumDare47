@@ -43,30 +43,30 @@ public class UIShopController : MonoBehaviour
     public void BuyAttackUI()
     {
         EventManager.Dispatch("buyAttack", null);
-    }
+    } 
 
-    public void UpdateHealth(Data data)
+    public void UpdateHealth(Bytes.Data data)
     {
         playerHealth.text = ((ShopData)data).PlayerValue.ToString();
         upgradeHealth.text = "+"+ ((ShopData)data).Upgrade ;
         healthButton.GetComponentInChildren<Text>().text = ((ShopData)data).Cost.ToString();
     }
 
-    public void UpdateDefense(Data data)
+    public void UpdateDefense(Bytes.Data data)
     {
         playerDefense.text = ((ShopData)data).PlayerValue.ToString();
         upgradeDefense.text = "+" + ((ShopData)data).Upgrade;
         defenseButton.GetComponentInChildren<Text>().text = ((ShopData)data).Cost.ToString();
     }
 
-    public void UpdateAttack(Data data)
+    public void UpdateAttack(Bytes.Data data)
     {
         playerAttack.text = ((ShopData)data).PlayerValue.ToString();
         upgradeAttack.text = "+" + ((ShopData)data).Upgrade;
         attackButton.GetComponentInChildren<Text>().text = ((ShopData)data).Cost.ToString();
     }
 
-    public void UpdateSouls(Data data)
+    public void UpdateSouls(Bytes.Data data)
     {
         playerSouls.text = ((ShopData)data).SoulsCollected.ToString();
     }

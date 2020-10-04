@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopData : Data
+public class ShopData : Bytes.Data
 {
     public int SoulsCollected { get; private set; }
     public int Cost { get; private set; }
