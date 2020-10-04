@@ -473,6 +473,7 @@ GameObject:
   - component: {fileID: 2041173062}
   - component: {fileID: 2041173061}
   - component: {fileID: 2041173060}
+  - component: {fileID: 1881996504}
   m_Layer: 0
   m_Name: wtfIsThis
   m_TagString: Untagged
@@ -507,15 +508,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803eb05bd02a96545afa4da00b1571f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Hp: 15
-  _MaxHp: 15
+  _Hp: 21
+  _MaxHp: 21
   _Damage: 5
   _Defense: 3
   _Level: 0
   _SoulValue: 5
   attackCooldown: 1
   damageTakingCooldown: 0.5
+  _MovementSpeed: 2.5
+  _Range: 0
   _animController: {fileID: 0}
+  clan: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &2041173061
 Rigidbody2D:
   serializedVersion: 4
@@ -553,6 +560,25 @@ CapsuleCollider2D:
   m_Offset: {x: -9.956012e-12, y: 0.035293855}
   m_Size: {x: 0.49999905, y: 0.81011206}
   m_Direction: 0
+--- !u!114 &1881996504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776466865302322160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eb0802c1fa64541bf76fdf67924b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlledEntity: {fileID: 0}
+  creatureCampName: wtfIsThis_camp1
+  target: {fileID: 0}
+  initOnStart: 0
+  alphaStatDamage: 3
+  alphaStatHP: 11
+  alphaStatArmor: 3
 --- !u!1 &8776466865460853316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,7 +1282,7 @@ MonoBehaviour:
   animPrefix: wtfIsThis
   attackColliders:
   - {fileID: 8776466865729404040}
-  testAnims: 1
+  testAnims: 0
 --- !u!95 &8776466866233924300
 Animator:
   serializedVersion: 3
