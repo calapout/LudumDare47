@@ -7,16 +7,10 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _Speed = 1;
     [SerializeField] private int _Souls = 0;
     private Entity PlayerEntity;
     [SerializeField] private int[] _Levels = new int[3]{0,0,0};//0 = Hp, 1 = Damage, 2 = Defense
     [SerializeField] private Camera _camera;
-
-    public float Speed
-    {
-        get => _Speed;
-    }
 
     public int Souls
     {
@@ -62,7 +56,7 @@ public class Player : MonoBehaviour
     public void OnMove(InputValue value)
     {
         Vector2 movement = value.Get<Vector2>();
-        PlayerEntity.Move(movement * Speed);
+        PlayerEntity.Move(movement);
     }
 
     public void OnAttack(InputValue value)
