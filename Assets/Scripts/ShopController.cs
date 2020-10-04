@@ -28,10 +28,13 @@ namespace Bytes
             EventManager.AddEventListener("buyHealth", BuyHealth);
             EventManager.AddEventListener("buyDefense", BuyDefense);
             EventManager.AddEventListener("buyAttack", BuyAttack);
+            EventManager.AddEventListener("closeShopController", CloseShopController);
+            EventManager.Dispatch("initializeValues", null);
         }
 
         public void BuyHealth(Data data)
         {
+            Debug.Log("i am buying health");
             int price = upgradePrice[HealthIndex];
             if ( HealthIndex >= (upgradePrice.Length -1) || NumberSouls < price)
             {
@@ -39,7 +42,7 @@ namespace Bytes
             }
                 player.LevelUpHp();
                 player.ReduceSouls(price);
-                player.Hp = PlayerHealth - playerLevel[HealthIndex];
+                player.Hp = PlayerHealth + playerLevel[HealthIndex];
                 RefreshHealthValues();
         
         }
@@ -53,7 +56,7 @@ namespace Bytes
             }
                 player.LevelUpDefense();
                 player.ReduceSouls(price);
-                player.Defense = PlayerDefense - playerLevel[DefenseIndex];
+                player.Defense = PlayerDefense + playerLevel[DefenseIndex];
                 RefreshDefenseValues();
         }
 
@@ -66,7 +69,7 @@ namespace Bytes
             }
                 player.LevelUpDamage();
                 player.ReduceSouls(price);
-                player.Damage = PlayerAttack - playerLevel[AttackIndex];
+                player.Damage = PlayerAttack + playerLevel[AttackIndex];
                 RefreshAttackValues();
         }
 
@@ -84,6 +87,11 @@ namespace Bytes
             EventManager.Dispatch("updateHealth", new ShopData(upgradePrice[HealthIndex], PlayerHealth, playerLevel[HealthIndex]));
             EventManager.Dispatch("updateAttack", new ShopData(upgradePrice[AttackIndex], PlayerAttack, playerLevel[AttackIndex]));
             EventManager.Dispatch("updateDefense", new ShopData(upgradePrice[DefenseIndex], PlayerDefense, playerLevel[DefenseIndex]));
+        }
+
+        public void CloseShopController(Data data)
+        {
+            player.CloseShop();
         }
 
         private void RefreshHealthValues()
