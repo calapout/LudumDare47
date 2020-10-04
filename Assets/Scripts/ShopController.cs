@@ -28,8 +28,8 @@ namespace Bytes
             EventManager.AddEventListener("buyHealth", BuyHealth);
             EventManager.AddEventListener("buyDefense", BuyDefense);
             EventManager.AddEventListener("buyAttack", BuyAttack);
-            //EventManager.Dispatch("initializeValues", null);
-            InitialiseValues();
+            EventManager.AddEventListener("closeShopController", CloseShopController);
+            EventManager.Dispatch("initializeValues", null);
         }
 
         public void BuyHealth(Data data)
@@ -73,7 +73,7 @@ namespace Bytes
                 RefreshAttackValues();
         }
 
-        public void InitialiseValues()
+        public void InitialiseValues(Data data)
         {
             NumberSouls = player.Souls;
             PlayerHealth = player.Hp;
@@ -87,6 +87,11 @@ namespace Bytes
             EventManager.Dispatch("updateHealth", new ShopData(upgradePrice[HealthIndex], PlayerHealth, playerLevel[HealthIndex]));
             EventManager.Dispatch("updateAttack", new ShopData(upgradePrice[AttackIndex], PlayerAttack, playerLevel[AttackIndex]));
             EventManager.Dispatch("updateDefense", new ShopData(upgradePrice[DefenseIndex], PlayerDefense, playerLevel[DefenseIndex]));
+        }
+
+        public void CloseShopController(Data data)
+        {
+            player.CloseShop();
         }
 
         private void RefreshHealthValues()
