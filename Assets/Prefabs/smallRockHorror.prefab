@@ -866,6 +866,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8807103841740347755}
+  - component: {fileID: 4104330459160924037}
+  - component: {fileID: 3208079575280159720}
+  - component: {fileID: 8301706604690184616}
   m_Layer: 0
   m_Name: smallRockHorror
   m_TagString: Untagged
@@ -882,12 +885,70 @@ Transform:
   m_GameObject: {fileID: 8807103841740347754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.73, y: 5.47, z: -1.2774272}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.6971, y: 2.6971, z: 2.6971}
   m_Children:
   - {fileID: 8807103841233402911}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4104330459160924037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807103841740347754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 803eb05bd02a96545afa4da00b1571f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Hp: 30
+  _MaxHp: 30
+  _Damage: 30
+  _Defense: 20
+  _Level: 0
+  _SoulValue: 20
+  attackCooldown: 1
+  damageTakingCooldown: 0.5
+  _animController: {fileID: 0}
+--- !u!58 &3208079575280159720
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807103841740347754}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.020648478, y: -0.016130306}
+  serializedVersion: 2
+  m_Radius: 0.4612917
+--- !u!50 &8301706604690184616
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807103841740347754}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8807103842526702850
 GameObject:
   m_ObjectHideFlags: 0

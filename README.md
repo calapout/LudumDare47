@@ -9,7 +9,7 @@
     - [x] Damage
     - [x] Defense
     - [x] Level
-    - [~] Attack()
+    - [x] Attack()
     - [x] Move()
     - [x] TakeDamage()
     - [x] Die()
@@ -30,7 +30,7 @@
   - [ ] Pattern `Fonctionnality`
   - [ ] CanAttack():bool
 
-- [ ] Shop `Fonctionnality`
+- [x] Shop `Fonctionnality`
 - [ ] Reset Map `Fonctionnality`
 - [ ] Victory `Fonctionnality`
 - UI `Fonctionnality`
@@ -44,8 +44,8 @@
         - [ ] Credits
 
 ### Assets/animation
-- [ ] UI
-- [ ] Map
-- [ ] Enemies
+- [x] UI
+- [x] Map
+- [x] Enemies
 - [ ] Boss
 - [ ] Shop
