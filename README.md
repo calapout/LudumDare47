@@ -1,8 +1,8 @@
 # LudumDare47
 
-##Task
+## Task
 
-###Code
+### Code
 - Entities `Component`
     - [x] HP
     - [x] MaxHp
@@ -43,7 +43,7 @@
         - [ ] Quit
         - [ ] Credits
 
-###Assets/animation
+### Assets/animation
 - [ ] UI
 - [ ] Map
 - [ ] Enemies
