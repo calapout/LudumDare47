@@ -92,7 +92,7 @@ public class Entity : MonoBehaviour
         print("damage: "+ takenDamage);
         this.canTakeDamage = false;
         Invoke("EnableDamageTaking", damageTakingCooldown);
-        this.Hp -= Mathf.Clamp(takenDamage - Defense, 0, 9999);
+        this.Hp -= Mathf.Clamp(takenDamage - Defense, 11, 9999);
         if (this.Hp <= 0)
         {
             this.Hp = 0;
@@ -117,6 +117,7 @@ public class Entity : MonoBehaviour
 
         isDead = true;
         _animController?.PlayDieAnim(()=>EventManager.Dispatch("EntityDie", new EntityData(this)));
+        EventManager.Dispatch("playerGainsSoul", new ObjectCreationManager.SoulsplosionData(this.SoulValue, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)));
         if (SR != null)
         {
             SR.color = new Color(1f,1f,1f,0f);

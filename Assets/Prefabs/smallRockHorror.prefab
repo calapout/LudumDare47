@@ -706,7 +706,7 @@ MonoBehaviour:
   animPrefix: smallRockHorror
   attackColliders:
   - {fileID: 8807103841581702674}
-  testAnims: 1
+  testAnims: 0
 --- !u!95 &8807103841077442646
 Animator:
   serializedVersion: 3
@@ -940,7 +940,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
