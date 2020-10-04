@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public int Hp
     {
         get => PlayerEntity.Hp;
-        set => PlayerEntity.IncreaseHp(PlayerEntity.Hp - value);
+        set => PlayerEntity.IncreaseHp(value - PlayerEntity.Hp);
     }
     
     public int HpLevel
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     public int Damage
     {
         get => PlayerEntity.Damage;
-        set => PlayerEntity.IncreaseDamage(PlayerEntity.Damage - value);
+        set => PlayerEntity.IncreaseDamage(value - PlayerEntity.Damage);
     }
     
     public int DamageLevel
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     public int Defense
     {
         get => PlayerEntity.Defense;
-        set => PlayerEntity.IncreaseDefense(PlayerEntity.Defense - value);
+        set => PlayerEntity.IncreaseDefense(value - PlayerEntity.Defense);
     }
     public int DefenseLevel
     {
