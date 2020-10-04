@@ -61,7 +61,8 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        PlayerEntity.Move(value.Get<Vector2>() * Speed);
+        Vector2 movement = value.Get<Vector2>();
+        PlayerEntity.Move(movement * Speed);
     }
 
     public void OnAttack(InputValue value)

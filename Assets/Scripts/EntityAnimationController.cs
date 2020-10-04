@@ -77,7 +77,7 @@ public class EntityAnimationController : MonoBehaviour
         Utils.PlayAnimatorClip(GetComponent<Animator>(), animPrefix + "_die", callback);
     }
 
-    protected void PlayAttackAnim()
+    public void PlayAttackAnim()
     {
         _AnimStateMachine.PlayAnimOnce(BaseCreatureAnimState.Attack, animPrefix);
     }
