@@ -17,11 +17,11 @@ public class ObjectCreationManager : MonoBehaviour
 
     private void Start()
     {
-        Animate.Repeat(1f, () =>
+        /*Animate.Repeat(1f, () =>
         {
             EventManager.Dispatch("createSoulsplosion", new SoulsplosionData(Random.Range(3, 7), new Vector2(Random.Range(-5, 5), Random.Range(-5, 5))));
             return true;
-        }, 12);
+        }, 12);*/
     }
 
     public void CreateSoulsplosionAt(Bytes.Data data)

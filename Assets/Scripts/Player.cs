@@ -74,7 +74,6 @@ public class Player : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        Debug.Log("i attack");
         PlayerEntity.Attack();
     }
 
