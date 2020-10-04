@@ -174,6 +174,8 @@ public class Player : MonoBehaviour
     {
         transform.position = shopSpawn.position;
         PlayerEntity.ResetEntity();
+
+        EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
     }
 
 }
