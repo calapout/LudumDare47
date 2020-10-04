@@ -875,6 +875,7 @@ GameObject:
   - component: {fileID: 261494489}
   - component: {fileID: 261494490}
   - component: {fileID: 261494487}
+  - component: {fileID: 145380910}
   m_Layer: 0
   m_Name: giantScarab
   m_TagString: Untagged
@@ -931,8 +932,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025796657, y: 0.020870566}
-  m_Size: {x: 2.447716, y: 1.2223566}
+  m_Offset: {x: -0.014482975, y: 0.017112259}
+  m_Size: {x: 2.2002432, y: 0.746139}
   m_Direction: 1
 --- !u!114 &261494487
 MonoBehaviour:
@@ -946,15 +947,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803eb05bd02a96545afa4da00b1571f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Hp: 10
-  _MaxHp: 10
-  _Damage: 5
-  _Defense: 5
+  _Hp: 15
+  _MaxHp: 15
+  _Damage: 3
+  _Defense: 1
   _Level: 1
-  _SoulValue: 0
-  attackCooldown: 1
+  _SoulValue: 7
+  attackCooldown: 1.3
   damageTakingCooldown: 0
+  _MovementSpeed: 2.5
+  _Range: 3
   _animController: {fileID: 0}
+  clan: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &145380910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512541238845389987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30eb0802c1fa64541bf76fdf67924b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlledEntity: {fileID: 0}
+  creatureCampName: giantScarab_camp1
+  target: {fileID: 0}
+  initOnStart: 0
+  alphaStatDamage: 2
+  alphaStatHP: 6
+  alphaStatArmor: 2
 --- !u!1 &2512541238946562276
 GameObject:
   m_ObjectHideFlags: 0
