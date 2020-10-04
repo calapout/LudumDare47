@@ -155,8 +155,13 @@ public class Player : MonoBehaviour
         EventManager.AddEventListener("EntityDie", OnEntityDie);
         PlayerEntity = GetComponent<Entity>();
 
+        PlayerEntity.OnTakeDamage.AddListener((Entity e) => {
+            EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
+        });
+
         PlayerEntity.OnDieAnimDone.AddListener((Entity e)=> {
-            Animate.Delay(1.2f, Respawn);
+            EventManager.Dispatch("StartFadeOut", null);
+            EventManager.AddEventListener("FadedOut", Respawn);
         });
     }
 
@@ -165,10 +170,12 @@ public class Player : MonoBehaviour
         _camera.transform.position = new Vector3(transform.position.x, transform.position.y, _camera.transform.position.z);
     }
 
-    private void Respawn()
+    private void Respawn(Bytes.Data data)
     {
         transform.position = shopSpawn.position;
         PlayerEntity.ResetEntity();
+
+        EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
     }
 
 }
