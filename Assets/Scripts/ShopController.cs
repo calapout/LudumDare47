@@ -39,7 +39,7 @@ namespace Bytes
             }
                 player.LevelUpHp();
                 player.ReduceSouls(price);
-                player.Hp = PlayerHealth - playerLevel[HealthIndex];
+                player.Hp = PlayerHealth + playerLevel[HealthIndex];
                 RefreshHealthValues();
         
         }
@@ -53,7 +53,7 @@ namespace Bytes
             }
                 player.LevelUpDefense();
                 player.ReduceSouls(price);
-                player.Defense = PlayerDefense - playerLevel[DefenseIndex];
+                player.Defense = PlayerDefense + playerLevel[DefenseIndex];
                 RefreshDefenseValues();
         }
 
@@ -66,7 +66,7 @@ namespace Bytes
             }
                 player.LevelUpDamage();
                 player.ReduceSouls(price);
-                player.Damage = PlayerAttack - playerLevel[AttackIndex];
+                player.Damage = PlayerAttack + playerLevel[AttackIndex];
                 RefreshAttackValues();
         }
 
