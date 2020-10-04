@@ -202,6 +202,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4320721}
   m_CullTransparentMesh: 0
+--- !u!114 &32632610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2470576117317664209, guid: 33256bd96efe76842abfd3edf463f6c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 359576737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b061f9744a63d8f41ab679201cdd4661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &47195909
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30005db33af6f024d9eaf39758c6c3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 978361324}
+  player: {fileID: 32632610}
 --- !u!114 &171811159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +433,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f612f29795b0a5d448d9166ca2b0c166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthButton: {fileID: 310372985}
+  attackButton: {fileID: 1001199716}
+  defenseButton: {fileID: 1430434221}
+  playerHealth: {fileID: 1441516158}
+  playerAttack: {fileID: 1023681574}
+  playerDefense: {fileID: 4320723}
+  upgradeHealth: {fileID: 1478607872}
+  upgradeAttack: {fileID: 1928511089}
+  upgradeDefense: {fileID: 504787038}
+  playerSouls: {fileID: 1983775550}
 --- !u!1 &203068104
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,13 +762,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 171811158}
-        m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: buyHealth
-        m_Mode: 2
+      - m_Target: {fileID: 171811159}
+        m_TargetAssemblyTypeName: UIShopController, Assembly-CSharp
+        m_MethodName: BuyHealthUI
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1043460052}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -790,6 +812,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310372983}
   m_CullTransparentMesh: 0
+--- !u!1001 &359576737
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2470576117317664209, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1603134554}
+    - target: {fileID: 2470576117317664209, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: _Souls
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664213, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2470576117317664219, guid: 33256bd96efe76842abfd3edf463f6c6,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33256bd96efe76842abfd3edf463f6c6, type: 3}
 --- !u!1 &477766837
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,7 +1060,7 @@ GameObject:
   - component: {fileID: 563458428}
   - component: {fileID: 563458427}
   m_Layer: 5
-  m_Name: StrengthIcon
+  m_Name: AttackIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,51 +1369,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870981494}
   m_CullTransparentMesh: 0
---- !u!1 &978361323
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 978361325}
-  - component: {fileID: 978361324}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &978361324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978361323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b061f9744a63d8f41ab679201cdd4661, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Speed: 1
-  _Souls: 0
---- !u!4 &978361325
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978361323}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1001199714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1382,7 @@ GameObject:
   - component: {fileID: 1001199717}
   - component: {fileID: 1001199716}
   m_Layer: 5
-  m_Name: BuyDefense
+  m_Name: BuyAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1395,13 +1451,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 171811158}
-        m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: buyArmor
-        m_Mode: 2
+      - m_Target: {fileID: 171811159}
+        m_TargetAssemblyTypeName: UIShopController, Assembly-CSharp
+        m_MethodName: BuyAttackUI
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 870981496}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1815,7 +1871,7 @@ GameObject:
   - component: {fileID: 1430434222}
   - component: {fileID: 1430434221}
   m_Layer: 5
-  m_Name: BuyStrength
+  m_Name: BuyDefense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1884,13 +1940,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 171811158}
-        m_TargetAssemblyTypeName: ShopController, Assembly-CSharp
-        m_MethodName: buyStrength
-        m_Mode: 2
+      - m_Target: {fileID: 171811159}
+        m_TargetAssemblyTypeName: UIShopController, Assembly-CSharp
+        m_MethodName: BuyDefenseUI
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1726208404}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

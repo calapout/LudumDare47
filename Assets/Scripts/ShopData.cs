@@ -9,14 +9,18 @@ public class ShopData : Data
     public int Cost { get; private set; }
     public int PlayerValue { get; private set; }
     public int Upgrade { get; private set; }
-
-    /*if health was upgraded*/
-    public ShopData(int soulsCollected, int cost, int playerValue, int upgrade)
+    public ShopData(int soulsCollected)
     {
         SoulsCollected = soulsCollected;
+    }
+
+    public ShopData(int cost, int playerValue, int upgrade)
+    {
         Cost = cost;
         PlayerValue = playerValue;
         Upgrade = upgrade;
     }
+
+    
 
 }

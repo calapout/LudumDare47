@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     public int HpLevel
     {
         get => _Levels[0];
-        private set => _Levels[0] += value;
+        private set => _Levels[0] = value;
     }
     
     public int Damage
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     public int DamageLevel
     {
         get => _Levels[1];
-        private set => _Levels[1] += value;
+        private set => _Levels[1] = value;
     }
     
     public int Defense
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     public int DefenseLevel
     {
         get => _Levels[2];
-        private set => _Levels[2] += value;
+        private set => _Levels[2] = value;
     }
 
     public void OnMove(InputValue value)
