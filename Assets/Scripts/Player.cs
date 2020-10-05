@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Entity PlayerEntity;
     private bool CanOpenShop = false;
     private bool ShopIsOpen = false;
+    private bool menuIsOpened = false;
     private bool IsMovementEnabled = true;
     [SerializeField] private int[] _Levels = new int[3] { 0, 0, 0 };//0 = Hp, 1 = Damage, 2 = Defense
     [SerializeField] private Camera _camera;
@@ -103,13 +104,24 @@ public class Player : MonoBehaviour
 
     public void OnInterract()
     {
-        if (!ShopIsOpen && CanOpenShop)
+        if (IsMovementEnabled && !ShopIsOpen && CanOpenShop)
         {
             EventManager.Dispatch("openShop", null);
             ShopIsOpen = true;
             this.PlayerEntity.StopMoving();
-            IsMovementEnabled = false;
+            DisableMovement();
         }
+    }
+
+    public void DisableMovement()
+    {
+        IsMovementEnabled = false;
+        PlayerEntity.StopMoving();
+    }
+
+    public void EnableMovement()
+    {
+        IsMovementEnabled = true;
     }
 
     public void OnLeaveShop()
@@ -121,10 +133,20 @@ public class Player : MonoBehaviour
         
     }
 
+    public void OnOpenMenu()
+    {
+        if(!ShopIsOpen)
+            EventManager.Dispatch("tryOpenCloseMenu", new TryOpenCloseMenuData(ShopIsOpen));
+    }
+
     public void CloseShop()
     {
         EventManager.Dispatch("closeShop", null);
-        ShopIsOpen = false;
+
+        // Fixes main menu opening
+        Animate.Delay(0.5f, ()=> { ShopIsOpen = false; });
+
+        EnableMovement();
         IsMovementEnabled = true;
 
         // Refresh stats
@@ -160,6 +182,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        EnableMovement();
+
         EventManager.AddEventListener("playerGainsSoul", (Bytes.Data d)=> {
             Souls++;
         });
