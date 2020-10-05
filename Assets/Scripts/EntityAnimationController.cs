@@ -72,21 +72,28 @@ public class EntityAnimationController : MonoBehaviour
         _AnimStateMachine.SetLoopedState(BaseCreatureAnimState.Idle, animPrefix, true);
     }
 
-    public void PlayDieAnim(System.Action callback)
+    public void PlayDieAnim(System.Action callback, bool sound = false)
     {
         _AnimStateMachine.enabled = false;
         Utils.PlayAnimatorClip(GetComponent<Animator>(), animPrefix + "_die", callback);
+        if(sound) PlayAccordingSound(BaseCreatureAnimState.Die.ClipName);
     }
 
     public void PlayAttackAnim()
     {
         _AnimStateMachine.PlayAnimOnce(BaseCreatureAnimState.Attack, animPrefix);
+        PlayAccordingSound(BaseCreatureAnimState.Attack.ClipName);
     }
 
     // Should be called by a skill
     public void PlayCustomAnim(string animName)
     {
         _AnimStateMachine.PlayAnimOnceCustom(animName, animPrefix);
+    }
+
+    private void PlayAccordingSound(string suffix)
+    {
+        EventManager.Dispatch("playSound", new PlaySoundData(animPrefix + "_" + suffix));
     }
 
 }

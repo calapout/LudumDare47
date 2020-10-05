@@ -25,7 +25,11 @@ public class Player : MonoBehaviour
     public int Souls
     {
         get => _Souls;
-        private set { _Souls = value; EventManager.Dispatch("playerSoulChange", new ListenText.TextChangeData(Souls.ToString())); }
+        private set {
+            _Souls = value;
+            EventManager.Dispatch("playerSoulChange", new ListenText.TextChangeData(Souls.ToString()));
+            EventManager.Dispatch("playSound", new PlaySoundData("gainSoul"));
+        }
     }
 
     public int Hp
@@ -196,6 +200,7 @@ public class Player : MonoBehaviour
 
         PlayerEntity.OnTakeDamage.AddListener((Entity e) => {
             EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
+            EventManager.Dispatch("playSound", new PlaySoundData("champion_takeDamage"));
         });
 
         PlayerEntity.OnDieAnimDone.AddListener((Entity e)=> {
@@ -229,6 +234,7 @@ public class Player : MonoBehaviour
         if (collision.tag == "portal")
         {
             EventManager.Dispatch("startArena", null);
+            EventManager.Dispatch("playSound", new PlaySoundData("portal"));
         }
     }
 

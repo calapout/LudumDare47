@@ -47,6 +47,8 @@ public class GameLogic : MonoBehaviour
 
     private void SpawnBoss(Bytes.Data data)
     {
+        EventManager.Dispatch("playSound", new PlaySoundData("boss_spawn"));
+        EventManager.Dispatch("musicBossAppear", null);
         KillAllCreatures();
         print("Spawn boss!");
 
@@ -56,7 +58,7 @@ public class GameLogic : MonoBehaviour
 
     private void KillBoss(Bytes.Data d)
     {
-        if (currentBoss != null) { currentBoss.CancelBoss(); }
+        if (currentBoss != null) { currentBoss.CancelBoss(); EventManager.Dispatch("musicNormal", null); }
     }
 
     private void RespawnCamps()

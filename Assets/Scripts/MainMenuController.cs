@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] AudioSource sounds;
     [SerializeField] AudioSource music;
+    [SerializeField] AudioSource ambient;
 
     bool firstTimeOpened = false;
     bool menuIsOpened = false;
@@ -34,6 +35,7 @@ public class MainMenuController : MonoBehaviour
             if(!data.ShopOpened) HandleMenu();
         });
 
+        Time.timeScale = 0f;
         HandleMenu();
         firstTimeOpened = true;
     }
@@ -70,18 +72,24 @@ public class MainMenuController : MonoBehaviour
         firstTimeOpened = false;
         HandleMenu();
         player.EnableMovement();
+
+        PlayAccordingSound("UIGenericBtn");
     }
 
     public void GoToOptions()
     {
         options.SetActive(true);
         menu.SetActive(false);
+
+        PlayAccordingSound("UIGenericBtn");
     }
 
     public void GoToMenu()
     {
         options.SetActive(false);
         menu.SetActive(true);
+
+        PlayAccordingSound("UIGenericBtn");
     }
 
     public void SoundChanged(Slider slider)
@@ -93,10 +101,17 @@ public class MainMenuController : MonoBehaviour
         }
 
         music.volume = slider.value;
+        ambient.volume = music.volume * 0.75f;
     }
 
     public void Quit()
     {
         Application.Quit();
     }
+
+    private void PlayAccordingSound(string suffix)
+    {
+        EventManager.Dispatch("playSound", new PlaySoundData(suffix));
+    }
+
 }

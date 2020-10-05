@@ -37,7 +37,7 @@ public class GameTimer : MonoBehaviour
 
     private void EnableTimer(Bytes.Data data)
     {
-        print(123);
+        //print(123);
         SetTime(timerLength);
         this.isTimerEnable = true;
     }

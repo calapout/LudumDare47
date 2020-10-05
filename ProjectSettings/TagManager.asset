@@ -9,6 +9,9 @@ TagManager:
   - soul
   - shop
   - portal
+  - menu
+  - options
+  - sound
   layers:
   - Default
   - TransparentFX
