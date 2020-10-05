@@ -15,7 +15,7 @@ public class EntityAI : MonoBehaviour
     [SerializeField] private int alphaStatHP = 5;
     [SerializeField] private int alphaStatArmor = 1;
 
-    private void Start()
+    protected virtual void Start()
     {
         if (initOnStart)
             Initialize(creatureCampName);
@@ -88,7 +88,7 @@ public class EntityAI : MonoBehaviour
         Aggro(((EntityData)data).entity);
     }
 
-    private void Aggro(Entity target)
+    protected void Aggro(Entity target)
     {
         // Can't aggro again if already the target
         if (target != null && this.target == target) { return; }

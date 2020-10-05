@@ -513,7 +513,7 @@ MonoBehaviour:
   creatureCampName: greenThing_camp1
   target: {fileID: 0}
   initOnStart: 0
-  alphaStatDamage: 2
+  alphaStatDamage: 0
   alphaStatHP: 3
   alphaStatArmor: 0
 --- !u!1 &1139332273798459138

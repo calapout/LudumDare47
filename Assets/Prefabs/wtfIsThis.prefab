@@ -511,16 +511,22 @@ MonoBehaviour:
   _Hp: 21
   _MaxHp: 21
   _Damage: 5
-  _Defense: 3
+  _Defense: 2
   _Level: 0
-  _SoulValue: 5
+  _SoulValue: 14
   attackCooldown: 1
   damageTakingCooldown: 0.5
-  _MovementSpeed: 2.5
-  _Range: 0
+  _MovementSpeed: 2
+  _Range: 5
   _animController: {fileID: 0}
   clan: 1
   OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieAnimDone:
     m_PersistentCalls:
       m_Calls: []
 --- !u!50 &2041173061
@@ -538,7 +544,7 @@ Rigidbody2D:
   m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -576,8 +582,8 @@ MonoBehaviour:
   creatureCampName: wtfIsThis_camp1
   target: {fileID: 0}
   initOnStart: 0
-  alphaStatDamage: 3
-  alphaStatHP: 11
+  alphaStatDamage: 2
+  alphaStatHP: 9
   alphaStatArmor: 3
 --- !u!1 &8776466865460853316
 GameObject:
@@ -699,7 +705,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8776466865729404038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -772,14 +778,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8776466865935097476}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8776466866233924298}
   m_Father: {fileID: 8776466865302322161}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &8776466866010692041
 GameObject:
   m_ObjectHideFlags: 0

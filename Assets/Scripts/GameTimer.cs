@@ -23,7 +23,7 @@ public class GameTimer : MonoBehaviour
             return;
         }
         timeLeft -= Time.deltaTime;
-        EventManager.Dispatch("GameTimerUpdate", new GameTimerData(Mathf.Clamp(timeLeft/timerLength, 0, 1)));
+        EventManager.Dispatch("GameTimerUpdate", new GameTimerData(Mathf.Clamp(timeLeft/timerLength, 0, 1), timeLeft));
         if (timeLeft <= 0)
         {
             TimeOut();
@@ -37,6 +37,7 @@ public class GameTimer : MonoBehaviour
 
     private void EnableTimer(Bytes.Data data)
     {
+        print(123);
         SetTime(timerLength);
         this.isTimerEnable = true;
     }

@@ -137,22 +137,22 @@ public class Entity : MonoBehaviour
 
     public void IncreaseDefense(int addedDefense)
     {
-        this.Defense += addedDefense;
+        this.Defense = Defense + addedDefense;
         IncreaseLevel();
 
     }
 
     public void IncreaseHp(int addedHp)
     {
-        this.Hp += addedHp;
-        this.MaxHp += addedHp;
+        this.Hp = Hp + addedHp;
+        this.MaxHp = MaxHp + addedHp;
         IncreaseLevel();
 
     }
 
     public void IncreaseDamage(int addedDamage)
     {
-        this.Damage += Damage;
+        this.Damage = Damage + addedDamage;
         IncreaseLevel();
     }
 
@@ -168,7 +168,9 @@ public class Entity : MonoBehaviour
         //print("damage: "+ from.Damage);
         this.canTakeDamage = false;
         Invoke("EnableDamageTaking", damageTakingCooldown);
-        this.Hp -= Mathf.Clamp(from.Damage - Defense, 1, 9999);
+        int totalDmg = Mathf.Clamp(from.Damage - Defense, 1, 9999);
+        this.Hp -= totalDmg;
+        EventManager.Dispatch("createDamageText", new ObjectCreationManager.DamageTextData(totalDmg, this.transform.position + new Vector3(0, 0.1f, 0), 1f));
         OnTakeDamage?.Invoke(from);
         if (this.Hp <= 0)
         {
@@ -252,6 +254,11 @@ public class Entity : MonoBehaviour
     private void EnableDamageTaking()
     {
         canTakeDamage = true;
+    }
+
+    public void StopMoving()
+    {
+        this.direction = Vector2.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collider2d)

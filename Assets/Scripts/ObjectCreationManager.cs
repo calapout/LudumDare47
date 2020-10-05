@@ -49,8 +49,9 @@ public class ObjectCreationManager : MonoBehaviour
 
     private void CreateDamageTextAt(int dmgAmount, Vector2 position, float timeToLive = 3f)
     {
-        var g = InstantiatePrefab(soulPrefab, position, timeToLive);
-        
+        var g = InstantiatePrefab(damageTextPrefab, position, timeToLive);
+        if (timeToLive != -1) { Animate.Delay(timeToLive, () => { Destroy(g); }); }
+        g.GetComponent<DamageIndicator>().SetDmg(dmgAmount);
     }
 
     private GameObject InstantiatePrefab(GameObject prefab, Vector2 position, float timeToLive = -1)

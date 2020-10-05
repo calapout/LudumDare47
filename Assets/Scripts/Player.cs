@@ -18,10 +18,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform shopSpawn;
     [SerializeField] private Transform arenaSpawn;
 
+    public Transform shopTransform;
+    public bool cameraShouldFollowPlayer = true;
+
     public int Souls
     {
         get => _Souls;
-        private set => _Souls = value;
+        private set { _Souls = value; EventManager.Dispatch("playerSoulChange", new ListenText.TextChangeData(Souls.ToString())); }
     }
 
     public int Hp
@@ -71,7 +74,7 @@ public class Player : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        Debug.Log("i attack");
+        //Debug.Log("i attack");
         PlayerEntity.Attack();
     }
 
@@ -93,13 +96,9 @@ public class Player : MonoBehaviour
         PlayerEntity.Rotate(direction);
     }
 
-    public void OnEntityDie(Bytes.Data data)
+    public void OnPlayerDies(Entity e)
     {
-        if (data is EntityData)
-        {
-            EntityData entityData = (EntityData)data;
-            Entity entity = entityData.entity;
-        }
+        EventManager.Dispatch("playerDied", null);
     }
 
     public void OnInterract()
@@ -108,6 +107,7 @@ public class Player : MonoBehaviour
         {
             EventManager.Dispatch("openShop", null);
             ShopIsOpen = true;
+            this.PlayerEntity.StopMoving();
             IsMovementEnabled = false;
         }
     }
@@ -126,6 +126,11 @@ public class Player : MonoBehaviour
         EventManager.Dispatch("closeShop", null);
         ShopIsOpen = false;
         IsMovementEnabled = true;
+
+        // Refresh stats
+        EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
+        EventManager.Dispatch("playerAtkChange", new ListenText.TextChangeData(PlayerEntity.Damage.ToString()));
+        EventManager.Dispatch("playerArmorChange", new ListenText.TextChangeData(PlayerEntity.Defense.ToString()));
     }
 
     public int LevelUpHp()
@@ -148,12 +153,22 @@ public class Player : MonoBehaviour
         return this.Souls -= quantity;
     }
 
-
-
     private void Awake()
     {
-        EventManager.AddEventListener("EntityDie", OnEntityDie);
         PlayerEntity = GetComponent<Entity>();
+    }
+
+    private void Start()
+    {
+        EventManager.AddEventListener("playerGainsSoul", (Bytes.Data d)=> {
+            Souls++;
+        });
+
+        EventManager.AddEventListener("placePlayerInArena", OnTeleportPlayerInArena);
+
+        EventManager.AddEventListener("bossDefeated", (Bytes.Data d)=> { cameraShouldFollowPlayer = false; });
+
+        PlayerEntity.OnDie.AddListener(OnPlayerDies);
 
         PlayerEntity.OnTakeDamage.AddListener((Entity e) => {
             EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
@@ -163,11 +178,42 @@ public class Player : MonoBehaviour
             EventManager.Dispatch("StartFadeOut", null);
             EventManager.AddEventListener("FadedOut", Respawn);
         });
+
+        EventManager.Dispatch("playerSoulChange", new ListenText.TextChangeData(Souls.ToString()));
+        EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
+        EventManager.Dispatch("playerAtkChange", new ListenText.TextChangeData(PlayerEntity.Damage.ToString()));
+        EventManager.Dispatch("playerArmorChange", new ListenText.TextChangeData(PlayerEntity.Defense.ToString()));
     }
 
     private void Update()
     {
-        _camera.transform.position = new Vector3(transform.position.x, transform.position.y, _camera.transform.position.z);
+        if (cameraShouldFollowPlayer)
+            _camera.transform.position = new Vector3(transform.position.x, transform.position.y, _camera.transform.position.z);
+
+        if (Vector2.Distance(shopTransform.transform.position, this.transform.position) <= 5)
+        {
+            CanOpenShop = true;
+        }
+        else
+        {
+            CanOpenShop = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "portal")
+        {
+            EventManager.Dispatch("startArena", null);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "shop")
+        {
+            CanOpenShop = false;
+        }
     }
 
     private void Respawn(Bytes.Data data)
@@ -176,6 +222,13 @@ public class Player : MonoBehaviour
         PlayerEntity.ResetEntity();
 
         EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
+
+        EventManager.Dispatch("killBoss", null);
+    }
+
+    public void OnTeleportPlayerInArena(Bytes.Data data)
+    {
+        transform.position = arenaSpawn.position;
     }
 
 }

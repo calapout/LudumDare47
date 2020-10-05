@@ -10,7 +10,7 @@ public class MonsterCamp : MonoBehaviour
     public string monsterCampName;
     private void Start()
     {
-        RespawnCreatures();
+        //RespawnCreatures();
 
         //Bytes.Animate.Delay(5f, RespawnCreatures);
     }
@@ -30,6 +30,16 @@ public class MonsterCamp : MonoBehaviour
             monsters[i] = CreateCreature(spawnPoint);
             monsters[i].Initialize(monsterCampName, isAlpha: (i == 1));
             i++;
+        }
+    }
+    public void KillCreatures()
+    {
+        for (int r = 0; r < monsters.Length; r++)
+        {
+            if (monsters[r] != null)
+            {
+                monsters[r].controlledEntity.Die(false);
+            }
         }
     }
     private EntityAI CreateCreature(Transform tr)

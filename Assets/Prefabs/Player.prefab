@@ -1801,14 +1801,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Hp: 10
   _MaxHp: 10
-  _Damage: 5
-  _Defense: 5
+  _Damage: 1
+  _Defense: 0
   _Level: 1
   _SoulValue: 0
   attackCooldown: 1
-  damageTakingCooldown: 0.5
-  _MovementSpeed: 5
+  damageTakingCooldown: 0.05
+  _MovementSpeed: 6
+  _Range: 0
   _animController: {fileID: 0}
+  clan: 0
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDieAnimDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1959395009263261904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,9 +1832,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b061f9744a63d8f41ab679201cdd4661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Souls: 0
+  _Souls: 55
   _Levels: 000000000000000000000000
   _camera: {fileID: 0}
+  shopSpawn: {fileID: 0}
+  arenaSpawn: {fileID: 0}
+  shopTransform: {fileID: 0}
 --- !u!114 &1959395009263261905
 MonoBehaviour:
   m_ObjectHideFlags: 0
