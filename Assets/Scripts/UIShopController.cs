@@ -57,21 +57,33 @@ public class UIShopController : MonoBehaviour
     public void UpdateHealth(Bytes.Data data)
     {
         playerHealth.text = ((ShopData)data).PlayerValue.ToString();
-        upgradeHealth.text = "+"+ ((ShopData)data).Upgrade ;
+
+        string upgradeTxt = "+" + ((ShopData)data).Upgrade;
+        if (((ShopData)data).IsMaxIndex) { upgradeTxt = "-"; }
+        upgradeHealth.text = upgradeTxt;
+
         healthButton.GetComponentInChildren<Text>().text = ((ShopData)data).Cost.ToString();
     }
 
     public void UpdateDefense(Bytes.Data data)
     {
         playerDefense.text = ((ShopData)data).PlayerValue.ToString();
-        upgradeDefense.text = "+" + ((ShopData)data).Upgrade;
+
+        string upgradeTxt = "+" + ((ShopData)data).Upgrade;
+        if (((ShopData)data).IsMaxIndex) { upgradeTxt = "-"; }
+        upgradeDefense.text = upgradeTxt;
+
         defenseButton.GetComponentInChildren<Text>().text = ((ShopData)data).Cost.ToString();
     }
 
     public void UpdateAttack(Bytes.Data data)
     {
         playerAttack.text = ((ShopData)data).PlayerValue.ToString();
-        upgradeAttack.text = "+" + ((ShopData)data).Upgrade;
+
+        string upgradeTxt = "+" + ((ShopData)data).Upgrade;
+        if (((ShopData)data).IsMaxIndex) { upgradeTxt = "-"; }
+        upgradeAttack.text = upgradeTxt;
+
         attackButton.GetComponentInChildren<Text>().text = ((ShopData)data).Cost.ToString();
     }
 

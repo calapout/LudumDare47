@@ -7,7 +7,11 @@ using Bytes;
 public class GameLogic : MonoBehaviour
 {
     //public MonsterCamp bossCamp;
+    public Transform bossSpawn;
+    public GameObject bossPrefab;
     MonsterCamp[] camps;
+
+    BossAI currentBoss;
     private void Start()
     {
         camps = GameObject.FindObjectsOfType<MonsterCamp>(true);
@@ -17,6 +21,7 @@ public class GameLogic : MonoBehaviour
         EventManager.AddEventListener("startArena", StartArenaNewRunWithFade);
         EventManager.AddEventListener("GameTimerTimeOut", SpawnBoss);
         EventManager.AddEventListener("playerDied", StopArena);
+        EventManager.AddEventListener("killBoss", KillBoss);
     }
     public void StartArena()
     {
@@ -44,6 +49,14 @@ public class GameLogic : MonoBehaviour
     {
         KillAllCreatures();
         print("Spawn boss!");
+
+        currentBoss = CreateBoss(bossSpawn);
+
+    }
+
+    private void KillBoss(Bytes.Data d)
+    {
+        if (currentBoss != null) { currentBoss.CancelBoss(); }
     }
 
     private void RespawnCamps()
@@ -60,6 +73,21 @@ public class GameLogic : MonoBehaviour
         {
             camp.KillCreatures();
         }
+    }
+
+    private BossAI CreateBoss(Transform tr)
+    {
+        var e = InstantiatePrefab(bossPrefab, tr).GetComponent<BossAI>();
+        return e;
+    }
+
+    private GameObject InstantiatePrefab(GameObject prefab, Transform tr, float timeToLive = -1)
+    {
+        var g = Instantiate(prefab, tr.position, this.transform.rotation);
+        g.transform.SetParent(tr);
+        g.transform.position = tr.position;
+
+        return g;
     }
 
 }

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/bossAndShop.unity
+    guid: c6553cc1b7e9e914b82c172701bf7c71
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6602a514dba033e4e91c86fa2e861636,
       type: 2}

@@ -168,7 +168,9 @@ public class Entity : MonoBehaviour
         //print("damage: "+ from.Damage);
         this.canTakeDamage = false;
         Invoke("EnableDamageTaking", damageTakingCooldown);
-        this.Hp -= Mathf.Clamp(from.Damage - Defense, 1, 9999);
+        int totalDmg = Mathf.Clamp(from.Damage - Defense, 1, 9999);
+        this.Hp -= totalDmg;
+        EventManager.Dispatch("createDamageText", new ObjectCreationManager.DamageTextData(totalDmg, this.transform.position + new Vector3(0, 0.1f, 0), 1f));
         OnTakeDamage?.Invoke(from);
         if (this.Hp <= 0)
         {

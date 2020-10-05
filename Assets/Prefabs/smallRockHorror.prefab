@@ -907,7 +907,7 @@ MonoBehaviour:
   _Hp: 77
   _MaxHp: 77
   _Damage: 10
-  _Defense: 12
+  _Defense: 9
   _Level: 7
   _SoulValue: 25
   attackCooldown: 1.7
@@ -980,7 +980,7 @@ MonoBehaviour:
   initOnStart: 0
   alphaStatDamage: 5
   alphaStatHP: 33
-  alphaStatArmor: 5
+  alphaStatArmor: 3
 --- !u!1 &8807103842526702850
 GameObject:
   m_ObjectHideFlags: 0

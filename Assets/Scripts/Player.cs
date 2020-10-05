@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform arenaSpawn;
 
     public Transform shopTransform;
+    public bool cameraShouldFollowPlayer = true;
 
     public int Souls
     {
@@ -165,6 +166,8 @@ public class Player : MonoBehaviour
 
         EventManager.AddEventListener("placePlayerInArena", OnTeleportPlayerInArena);
 
+        EventManager.AddEventListener("bossDefeated", (Bytes.Data d)=> { cameraShouldFollowPlayer = false; });
+
         PlayerEntity.OnDie.AddListener(OnPlayerDies);
 
         PlayerEntity.OnTakeDamage.AddListener((Entity e) => {
@@ -184,7 +187,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _camera.transform.position = new Vector3(transform.position.x, transform.position.y, _camera.transform.position.z);
+        if (cameraShouldFollowPlayer)
+            _camera.transform.position = new Vector3(transform.position.x, transform.position.y, _camera.transform.position.z);
 
         if (Vector2.Distance(shopTransform.transform.position, this.transform.position) <= 5)
         {
@@ -218,6 +222,8 @@ public class Player : MonoBehaviour
         PlayerEntity.ResetEntity();
 
         EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
+
+        EventManager.Dispatch("killBoss", null);
     }
 
     public void OnTeleportPlayerInArena(Bytes.Data data)

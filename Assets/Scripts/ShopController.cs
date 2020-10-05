@@ -14,11 +14,11 @@ namespace Bytes
         private int HealthIndex { get; set; }
         private int DefenseIndex { get; set; }
         private int AttackIndex { get; set; }
-        private int[] upgradePrice = { 5, 10, 20, 30, 50, 80 };
+        private int[] upgradePrice = { 5, 10, 20, 30, 50, 80, 120, 160, 200 };
 
-        private int[] hpGrowthLevel = { 10, 15, 20, 20, 25, 35 };
-        private int[] atkGrowthLevel = { 1, 2, 2, 2, 3, 3 };
-        private int[] armorGrowthLevel = { 1, 1, 1, 1, 2, 2 };
+        private int[] hpGrowthLevel = { 10, 15, 20, 20, 25, 35, 40, 40, 40 };
+        private int[] atkGrowthLevel = { 1, 2, 2, 2, 3, 3, 4, 5, 5 };
+        private int[] armorGrowthLevel = { 1, 1, 1, 1, 2, 2, 2, 3, 3 };
 
         [SerializeField] Player player;
 
@@ -43,10 +43,10 @@ namespace Bytes
             {
                 return;
             }
-                player.LevelUpHp();
-                player.ReduceSouls(price);
-                player.Hp = PlayerHealth + hpGrowthLevel[HealthIndex];
-                RefreshHealthValues();
+            player.LevelUpHp();
+            player.ReduceSouls(price);
+            player.Hp = PlayerHealth + hpGrowthLevel[HealthIndex];
+            RefreshHealthValues();
         
         }
 
@@ -57,10 +57,10 @@ namespace Bytes
             {
                 return;
             }
-                player.LevelUpDefense();
-                player.ReduceSouls(price);
-                player.Defense = PlayerDefense + armorGrowthLevel[DefenseIndex];
-                RefreshDefenseValues();
+            player.LevelUpDefense();
+            player.ReduceSouls(price);
+            player.Defense = PlayerDefense + armorGrowthLevel[DefenseIndex];
+            RefreshDefenseValues();
         }
 
         public void BuyAttack(Data data)
@@ -70,10 +70,10 @@ namespace Bytes
             {
                 return;
             }
-                player.LevelUpDamage();
-                player.ReduceSouls(price);
-                player.Damage = PlayerAttack + atkGrowthLevel[AttackIndex];
-                RefreshAttackValues();
+            player.LevelUpDamage();
+            player.ReduceSouls(price);
+            player.Damage = PlayerAttack + atkGrowthLevel[AttackIndex];
+            RefreshAttackValues();
         }
 
         public void InitialiseValues(Bytes.Data data)
@@ -106,7 +106,7 @@ namespace Bytes
             Debug.Log("Health Index " + HealthIndex);
 
             EventManager.Dispatch("updateSouls", new ShopData(NumberSouls));
-            EventManager.Dispatch("updateHealth", new ShopData(upgradePrice[HealthIndex], PlayerHealth, hpGrowthLevel[HealthIndex]));
+            EventManager.Dispatch("updateHealth", new ShopData(upgradePrice[HealthIndex], PlayerHealth, hpGrowthLevel[HealthIndex], (HealthIndex == hpGrowthLevel.Length - 1)));
 
         }
 
@@ -116,7 +116,7 @@ namespace Bytes
             PlayerDefense = player.Defense; 
             DefenseIndex = player.DefenseLevel;
             EventManager.Dispatch("updateSouls", new ShopData(NumberSouls));
-            EventManager.Dispatch("updateDefense", new ShopData(upgradePrice[DefenseIndex], PlayerDefense, armorGrowthLevel[DefenseIndex]));
+            EventManager.Dispatch("updateDefense", new ShopData(upgradePrice[DefenseIndex], PlayerDefense, armorGrowthLevel[DefenseIndex], (DefenseIndex == armorGrowthLevel.Length - 1)));
         }
 
         private void RefreshAttackValues()
@@ -125,7 +125,7 @@ namespace Bytes
             PlayerAttack = player.Damage;
             AttackIndex = player.DamageLevel;
             EventManager.Dispatch("updateSouls", new ShopData(NumberSouls));
-            EventManager.Dispatch("updateAttack", new ShopData(upgradePrice[AttackIndex], PlayerAttack, atkGrowthLevel[AttackIndex]));
+            EventManager.Dispatch("updateAttack", new ShopData(upgradePrice[AttackIndex], PlayerAttack, atkGrowthLevel[AttackIndex], (AttackIndex == atkGrowthLevel.Length - 1) ));
         }
     
     }

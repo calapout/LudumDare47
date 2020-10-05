@@ -73,7 +73,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soulPrefab: {fileID: 6063473358369985469, guid: 4de8555626430ac49be777b6c5d73656,
     type: 3}
-  damageTextPrefab: {fileID: 0}
+  damageTextPrefab: {fileID: 1168410805730551300, guid: 6a04b51dd1b761449b7fa8e1ede25071,
+    type: 3}
 --- !u!114 &1907425247100366656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d235522f1d41069408db7aa3c6dd87df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerLength: 120
+  timerLength: 60
 --- !u!114 &190891037561080542
 MonoBehaviour:
   m_ObjectHideFlags: 0
