@@ -35,6 +35,7 @@ public class GameLogic : MonoBehaviour
     }
     private void StartArenaNewRunWithFade(Bytes.Data data)
     {
+        print("fade");
         EventManager.Dispatch("StartFadeOut", null);
         EventManager.AddEventListener("FadedOut", StartArenaNewRun);
     }

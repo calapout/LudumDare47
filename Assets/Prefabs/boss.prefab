@@ -1199,7 +1199,7 @@ MonoBehaviour:
   _Hp: 150
   _MaxHp: 150
   _Damage: 35
-  _Defense: 8
+  _Defense: 7
   _Level: 15
   _SoulValue: 45
   attackCooldown: 3.5

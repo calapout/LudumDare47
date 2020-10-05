@@ -14,11 +14,11 @@ namespace Bytes
         private int HealthIndex { get; set; }
         private int DefenseIndex { get; set; }
         private int AttackIndex { get; set; }
-        private int[] upgradePrice = { 5, 10, 20, 30, 50, 80, 120, 160, 200 };
+        private int[] upgradePrice = { 3, 8, 16, 24, 36, 50, 70, 90, 120 };
 
-        private int[] hpGrowthLevel = { 10, 15, 20, 20, 25, 35, 40, 40, 40 };
+        private int[] hpGrowthLevel = { 10, 15, 20, 20, 25, 35, 40, 45, 50 };
         private int[] atkGrowthLevel = { 1, 2, 2, 2, 3, 3, 4, 5, 5 };
-        private int[] armorGrowthLevel = { 1, 1, 1, 1, 2, 2, 2, 3, 3 };
+        private int[] armorGrowthLevel = { 1, 1, 1, 1, 2, 2, 3, 3, 4 };
 
         [SerializeField] Player player;
 

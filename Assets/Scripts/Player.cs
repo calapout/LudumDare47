@@ -22,13 +22,14 @@ public class Player : MonoBehaviour
     public Transform shopTransform;
     public bool cameraShouldFollowPlayer = true;
 
+    public bool portalOk = true;
+
     public int Souls
     {
         get => _Souls;
         private set {
             _Souls = value;
             EventManager.Dispatch("playerSoulChange", new ListenText.TextChangeData(Souls.ToString()));
-            EventManager.Dispatch("playSound", new PlaySoundData("gainSoul"));
         }
     }
 
@@ -104,6 +105,7 @@ public class Player : MonoBehaviour
     public void OnPlayerDies(Entity e)
     {
         EventManager.Dispatch("playerDied", null);
+        Animate.Delay(4f, () => { portalOk = true; });
     }
 
     public void OnInterract()
@@ -190,6 +192,7 @@ public class Player : MonoBehaviour
 
         EventManager.AddEventListener("playerGainsSoul", (Bytes.Data d)=> {
             Souls++;
+            EventManager.Dispatch("playSound", new PlaySoundData("gainSoul"));
         });
 
         EventManager.AddEventListener("placePlayerInArena", OnTeleportPlayerInArena);
@@ -231,10 +234,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "portal")
+        if (collision.tag == "portal" && portalOk)
         {
-            EventManager.Dispatch("startArena", null);
+            portalOk = false;
             EventManager.Dispatch("playSound", new PlaySoundData("portal"));
+            EventManager.Dispatch("startArena", null);
         }
     }
 
@@ -252,8 +256,8 @@ public class Player : MonoBehaviour
         PlayerEntity.ResetEntity();
 
         EventManager.Dispatch("playerHPChange", new ListenStatFillBar.FillingBarChangeData(PlayerEntity.Hp, PlayerEntity.MaxHp));
-
         EventManager.Dispatch("killBoss", null);
+        EventManager.RemoveEventListener("FadedOut", Respawn);
     }
 
     public void OnTeleportPlayerInArena(Bytes.Data data)
