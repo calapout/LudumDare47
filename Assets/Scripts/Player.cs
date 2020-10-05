@@ -25,7 +25,11 @@ public class Player : MonoBehaviour
     public int Souls
     {
         get => _Souls;
-        private set { _Souls = value; EventManager.Dispatch("playerSoulChange", new ListenText.TextChangeData(Souls.ToString())); }
+        private set {
+            _Souls = value;
+            EventManager.Dispatch("playerSoulChange", new ListenText.TextChangeData(Souls.ToString()));
+            EventManager.Dispatch("playSound", new PlaySoundData("gainSoul"));
+        }
     }
 
     public int Hp

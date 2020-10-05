@@ -47,6 +47,8 @@ public class GameLogic : MonoBehaviour
 
     private void SpawnBoss(Bytes.Data data)
     {
+        EventManager.Dispatch("playSound", new PlaySoundData("boss_spawn"));
+
         KillAllCreatures();
         print("Spawn boss!");
 

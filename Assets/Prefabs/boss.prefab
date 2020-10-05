@@ -1205,7 +1205,7 @@ MonoBehaviour:
   attackCooldown: 3.5
   damageTakingCooldown: 0.1
   _MovementSpeed: 2
-  _Range: 8.8
+  _Range: 8.6
   _animController: {fileID: 0}
   clan: 1
   OnTakeDamage:
@@ -1304,7 +1304,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5296757683699810052}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

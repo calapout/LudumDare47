@@ -45,7 +45,7 @@ public class EntityAI : MonoBehaviour
 
     private void Update()
     {
-        if (target != null && !controlledEntity.Dead)
+        if (target != null && !controlledEntity.Dead && !target.Dead)
         {
             if (WalkInRange(target.transform))
             {
@@ -93,7 +93,7 @@ public class EntityAI : MonoBehaviour
         // Can't aggro again if already the target
         if (target != null && this.target == target) { return; }
 
-        Debug.Log(this.name + " received aggro from camp named: " + creatureCampName + " and target is: " + target.name);
+        //Debug.Log(this.name + " received aggro from camp named: " + creatureCampName + " and target is: " + target.name);
         this.target = target;
     }
 

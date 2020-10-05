@@ -175,11 +175,11 @@ public class Entity : MonoBehaviour
         if (this.Hp <= 0)
         {
             this.Hp = 0;
-            Die();
+            Die(true, true);
         }
     }
     
-    public void Die(bool soulCreation = true)
+    public void Die(bool soulCreation = true, bool sound = false)
     {
         if (isDead)
         {
@@ -187,7 +187,7 @@ public class Entity : MonoBehaviour
         }
 
         isDead = true;
-        ThrowDieEvent(soulCreation);
+        ThrowDieEvent(soulCreation, sound);
         /*if (SR != null)
         {
             SR.color = new Color(1f,1f,1f,0f);
@@ -272,13 +272,13 @@ public class Entity : MonoBehaviour
         }
     }
 
-    private void ThrowDieEvent(bool soulCreation = true)
+    private void ThrowDieEvent(bool soulCreation = true, bool sound = false)
     {
         OnDie?.Invoke(this);
         _animController?.PlayDieAnim(()=> {
             EventManager.Dispatch("EntityDie", new EntityData(this));
             OnDieAnimDone?.Invoke(this);
-        });
+        }, sound);
         if(soulCreation) EventManager.Dispatch("createSoulsplosion", new ObjectCreationManager.SoulsplosionData(this.SoulValue, new Vector2(transform.position.x, transform.position.y)));
     }
 

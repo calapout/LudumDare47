@@ -47,7 +47,8 @@ namespace Bytes
             player.ReduceSouls(price);
             player.Hp = PlayerHealth + hpGrowthLevel[HealthIndex];
             RefreshHealthValues();
-        
+
+            PlayAccordingSound("buy");
         }
 
         public void BuyDefense(Data data)
@@ -61,6 +62,8 @@ namespace Bytes
             player.ReduceSouls(price);
             player.Defense = PlayerDefense + armorGrowthLevel[DefenseIndex];
             RefreshDefenseValues();
+
+            PlayAccordingSound("buy");
         }
 
         public void BuyAttack(Data data)
@@ -74,6 +77,8 @@ namespace Bytes
             player.ReduceSouls(price);
             player.Damage = PlayerAttack + atkGrowthLevel[AttackIndex];
             RefreshAttackValues();
+
+            PlayAccordingSound("buy");
         }
 
         public void InitialiseValues(Bytes.Data data)
@@ -95,6 +100,8 @@ namespace Bytes
         public void CloseShopController(Data data)
         {
             player.CloseShop();
+
+            PlayAccordingSound("UIGenericBtn");
         }
 
         private void RefreshHealthValues()
@@ -127,6 +134,12 @@ namespace Bytes
             EventManager.Dispatch("updateSouls", new ShopData(NumberSouls));
             EventManager.Dispatch("updateAttack", new ShopData(upgradePrice[AttackIndex], PlayerAttack, atkGrowthLevel[AttackIndex], (AttackIndex == atkGrowthLevel.Length - 1) ));
         }
-    
+
+
+        private void PlayAccordingSound(string suffix)
+        {
+            EventManager.Dispatch("playSound", new PlaySoundData(suffix));
+        }
+
     }
 }

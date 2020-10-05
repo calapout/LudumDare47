@@ -34,6 +34,7 @@ public class GoToBossEndCinematic : MonoBehaviour
     }
     private void PlayEndAnim()
     {
+        GameObject.FindObjectOfType<Player>()?.DisableMovement();
         Utils.PlayAnimatorClip(endAnim, "endAnim", ()=> {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });

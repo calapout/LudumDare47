@@ -34,6 +34,7 @@ public class MainMenuController : MonoBehaviour
             if(!data.ShopOpened) HandleMenu();
         });
 
+        Time.timeScale = 0f;
         HandleMenu();
         firstTimeOpened = true;
     }
@@ -70,18 +71,24 @@ public class MainMenuController : MonoBehaviour
         firstTimeOpened = false;
         HandleMenu();
         player.EnableMovement();
+
+        PlayAccordingSound("UIGenericBtn");
     }
 
     public void GoToOptions()
     {
         options.SetActive(true);
         menu.SetActive(false);
+
+        PlayAccordingSound("UIGenericBtn");
     }
 
     public void GoToMenu()
     {
         options.SetActive(false);
         menu.SetActive(true);
+
+        PlayAccordingSound("UIGenericBtn");
     }
 
     public void SoundChanged(Slider slider)
@@ -99,4 +106,10 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    private void PlayAccordingSound(string suffix)
+    {
+        EventManager.Dispatch("playSound", new PlaySoundData(suffix));
+    }
+
 }

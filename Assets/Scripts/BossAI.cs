@@ -14,6 +14,7 @@ public class BossAI : EntityAI
         Aggro(GameObject.Find("Player").GetComponent<Entity>());
 
         controlledEntity.OnDie.AddListener((Entity e)=> {
+            EventManager.Dispatch("playSound", new PlaySoundData("boss_die2"));
             EventManager.Dispatch("bossDefeated", null);
         });
     }
