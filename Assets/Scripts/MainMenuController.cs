@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] AudioSource sounds;
     [SerializeField] AudioSource music;
+    [SerializeField] AudioSource ambient;
 
     bool firstTimeOpened = false;
     bool menuIsOpened = false;
@@ -100,6 +101,7 @@ public class MainMenuController : MonoBehaviour
         }
 
         music.volume = slider.value;
+        ambient.volume = music.volume * 0.75f;
     }
 
     public void Quit()

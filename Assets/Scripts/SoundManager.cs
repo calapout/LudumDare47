@@ -15,9 +15,41 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource source;
     public AudioSource musicSource;
+    public AudioSource ambient;
+
+    public AudioClip normalMusic;
+    public AudioClip normalAmbient;
+
+    public AudioClip bossMusic;
+    public AudioClip bossAmbient;
+
     private void Start()
     {
         EventManager.AddEventListener("playSound", PlaySound);
+        EventManager.AddEventListener("musicNormal", MusicNormal);
+        EventManager.AddEventListener("musicBossAppear", MusicBossAppear);
+    }
+    private void MusicNormal(Bytes.Data data)
+    {
+        musicSource.Stop();
+        ambient.Stop();
+
+        musicSource.clip = normalMusic;
+        ambient.clip = normalAmbient;
+
+        musicSource.Play();
+        ambient.Play();
+    }
+    private void MusicBossAppear(Bytes.Data data)
+    {
+        musicSource.Stop();
+        ambient.Stop();
+
+        musicSource.clip = bossMusic;
+        ambient.clip = bossAmbient;
+
+        musicSource.Play();
+        ambient.Play();
     }
     private void PlaySound(Bytes.Data data)
     {
@@ -29,7 +61,7 @@ public class SoundManager : MonoBehaviour
 
         if (clip != null)
             source.PlayOneShot(clip, vol);
-        else
-            Debug.LogError("Sounds/" + soundData.Name + " doesnt exist!");
+        //else
+            //Debug.LogError("Sounds/" + soundData.Name + " doesnt exist!");
     }
 }

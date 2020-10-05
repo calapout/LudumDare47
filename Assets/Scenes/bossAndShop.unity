@@ -654,9 +654,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 07cdcbc32c05a6f4d9e6f964ecc85d9a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1293,6 +1293,86 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &435883892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435883893}
+  - component: {fileID: 435883895}
+  - component: {fileID: 435883894}
+  m_Layer: 5
+  m_Name: Credits (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &435883893
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435883892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 887439973}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 582, y: -297}
+  m_SizeDelta: {x: 626.34705, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &435883894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435883892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 0d1834ee5bc85bb499c732743dc17a27, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Assets:\n\t- Ultimate Sound FX Bundle\n    - Monster_SFX_Pack_2020\n   
+    - Peek\n    - This is Not a Dolphin - True Cuckoo (youtube Audio Library)"
+--- !u!222 &435883895
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435883892}
+  m_CullTransparentMesh: 0
 --- !u!1 &439144206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,10 +2974,30 @@ PrefabInstance:
       propertyPath: music
       value: 
       objectReference: {fileID: 1197759425}
+    - target: {fileID: 3637107871565902151, guid: 542b0626aa109d3438307a9d47aa91a7,
+        type: 3}
+      propertyPath: ambient
+      value: 
+      objectReference: {fileID: 187538315}
+    - target: {fileID: 3637107871588049071, guid: 542b0626aa109d3438307a9d47aa91a7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3637107871786418469, guid: 542b0626aa109d3438307a9d47aa91a7,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637107872067523912, guid: 542b0626aa109d3438307a9d47aa91a7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -327
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637107872067523912, guid: 542b0626aa109d3438307a9d47aa91a7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3637107872175040907, guid: 542b0626aa109d3438307a9d47aa91a7,
         type: 3}
@@ -2913,6 +3013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637107872228519180, guid: 542b0626aa109d3438307a9d47aa91a7,
+        type: 3}
+      propertyPath: m_Value
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3637107872228519183, guid: 542b0626aa109d3438307a9d47aa91a7,
         type: 3}
@@ -3593,6 +3698,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883321060}
   m_CullTransparentMesh: 0
+--- !u!224 &887439973 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3637107871588049068, guid: 542b0626aa109d3438307a9d47aa91a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 653741858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919493501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4303,9 +4414,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4cca6f569defb314f850b06658ae0135, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5340,6 +5451,26 @@ PrefabInstance:
       propertyPath: musicSource
       value: 
       objectReference: {fileID: 1197759425}
+    - target: {fileID: 754342474, guid: 3a1fc987501be4e4c857ddee66e4f34a, type: 3}
+      propertyPath: ambient
+      value: 
+      objectReference: {fileID: 187538315}
+    - target: {fileID: 754342474, guid: 3a1fc987501be4e4c857ddee66e4f34a, type: 3}
+      propertyPath: normalMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cca6f569defb314f850b06658ae0135, type: 3}
+    - target: {fileID: 754342474, guid: 3a1fc987501be4e4c857ddee66e4f34a, type: 3}
+      propertyPath: normalAmbient
+      value: 
+      objectReference: {fileID: 8300000, guid: 07cdcbc32c05a6f4d9e6f964ecc85d9a, type: 3}
+    - target: {fileID: 754342474, guid: 3a1fc987501be4e4c857ddee66e4f34a, type: 3}
+      propertyPath: bossMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 885f1e456f2514048af33c2384ecaac9, type: 3}
+    - target: {fileID: 754342474, guid: 3a1fc987501be4e4c857ddee66e4f34a, type: 3}
+      propertyPath: bossAmbient
+      value: 
+      objectReference: {fileID: 8300000, guid: e42cba51bfcdf4f4fbdd8da514c9811e, type: 3}
     - target: {fileID: 190891037561080542, guid: 3a1fc987501be4e4c857ddee66e4f34a,
         type: 3}
       propertyPath: bossSpawn
@@ -5348,7 +5479,7 @@ PrefabInstance:
     - target: {fileID: 1907425247100366656, guid: 3a1fc987501be4e4c857ddee66e4f34a,
         type: 3}
       propertyPath: timerLength
-      value: 3
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1907425247100366658, guid: 3a1fc987501be4e4c857ddee66e4f34a,
         type: 3}
@@ -5993,6 +6124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _Souls
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959395009263261905, guid: 57f398f5ef319b643b7ffdc781661e44,
+        type: 3}
+      propertyPath: m_DefaultActionMap
+      value: 41214151-e233-4b81-8aeb-9862c0d5fc73
       objectReference: {fileID: 0}
     - target: {fileID: 6546324165967573076, guid: 57f398f5ef319b643b7ffdc781661e44,
         type: 3}

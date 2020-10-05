@@ -40,6 +40,10 @@ public class EntityAI : MonoBehaviour
             Destroy(this.gameObject);
         });
 
+        controlledEntity.OnTakeDamage.AddListener((Entity e)=> {
+            EventManager.Dispatch("playSound", new PlaySoundData("takeDamage"));
+        });
+
         if (isAlpha) { SetAsAlphaMonster(); }
     }
 
