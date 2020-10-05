@@ -137,22 +137,22 @@ public class Entity : MonoBehaviour
 
     public void IncreaseDefense(int addedDefense)
     {
-        this.Defense += addedDefense;
+        this.Defense = Defense + addedDefense;
         IncreaseLevel();
 
     }
 
     public void IncreaseHp(int addedHp)
     {
-        this.Hp += addedHp;
-        this.MaxHp += addedHp;
+        this.Hp = Hp + addedHp;
+        this.MaxHp = MaxHp + addedHp;
         IncreaseLevel();
 
     }
 
     public void IncreaseDamage(int addedDamage)
     {
-        this.Damage += Damage;
+        this.Damage = Damage + addedDamage;
         IncreaseLevel();
     }
 
@@ -252,6 +252,11 @@ public class Entity : MonoBehaviour
     private void EnableDamageTaking()
     {
         canTakeDamage = true;
+    }
+
+    public void StopMoving()
+    {
+        this.direction = Vector2.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collider2d)

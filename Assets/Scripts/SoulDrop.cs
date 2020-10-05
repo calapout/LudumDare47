@@ -46,7 +46,7 @@ public class SoulDrop : MonoBehaviour
     {
         if (collision?.tag == tagToFollow)
         {
-            //Bytes.EventManager.Dispatch(eventNameToDispatch, null);
+            Bytes.EventManager.Dispatch(eventNameToDispatch, null);
             Destroy(this.gameObject);
         }
     }

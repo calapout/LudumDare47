@@ -8,6 +8,7 @@ TagManager:
   - canDamage
   - soul
   - shop
+  - portal
   layers:
   - Default
   - TransparentFX

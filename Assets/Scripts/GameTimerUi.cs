@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameTimerUi : MonoBehaviour
 {
+    public Text txt;
     private Image image;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,18 @@ public class GameTimerUi : MonoBehaviour
         }
         GameTimerData timerData = (GameTimerData) data;
         image.fillAmount = timerData.pourcent;
+
+        float timeLeft = timerData.TimeLeft;
+        int minutes = GetMinutes(timeLeft);
+        int seconds = (int)((timeLeft - (float)minutes * 60));
+        txt.text = minutes + ":" + seconds;
     }
 
+    private int GetMinutes(float timeLeft)
+    {
+        int minutes = 0;
+        while (timeLeft >= 60) { timeLeft -= 60; minutes++; }
+        return minutes;
+    }
 
 }

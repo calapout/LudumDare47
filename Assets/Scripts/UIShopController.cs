@@ -90,6 +90,7 @@ public class UIShopController : MonoBehaviour
     public void OpenShop(Data data)
     {
         this.GetComponentInChildren<Canvas>(true).gameObject.SetActive(true);
+        EventManager.Dispatch("initializeValues", null);
     }
 
 }
