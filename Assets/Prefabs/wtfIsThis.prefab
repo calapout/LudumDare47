@@ -510,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Hp: 21
   _MaxHp: 21
-  _Damage: 5
+  _Damage: 4
   _Defense: 2
   _Level: 0
   _SoulValue: 14
