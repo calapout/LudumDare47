@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         {
             EventManager.Dispatch("openShop", null);
             ShopIsOpen = true;
-            IsMovementEnabled = false;
+            DisableMovement();
         }
     }
 
@@ -125,6 +125,16 @@ public class Player : MonoBehaviour
     {
         EventManager.Dispatch("closeShop", null);
         ShopIsOpen = false;
+        DisableMovement();
+    }
+
+    public void DisableMovement()
+    {
+        IsMovementEnabled = false;
+    }
+
+    public void EnableMovement()
+    {
         IsMovementEnabled = true;
     }
 
